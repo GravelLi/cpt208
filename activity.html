@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runova</title>
+    <link rel="stylesheet" href="activity.css">
+</head>
+<body>
+    <div class="app-shell">
+        <div class="phone-frame">
+            <header class="top-bar">
+                <div class="header-main">
+                    <h1>活动中心</h1>
+                </div>
+                <button class="create-btn" type="button">+ 发起</button>
+            </header>
+
+            <main class="main-content">
+                <section class="quick-filter-section">
+                    <button class="filter-pill active-pill" type="button">推荐</button>
+                    <button class="filter-pill" type="button">附近</button>
+                    <button class="filter-pill" type="button">社团</button>
+                    <button class="filter-pill" type="button">新手友好</button>
+                    <button class="filter-pill" type="button">夜跑</button>
+                </section>
+
+                <section class="section-card verify-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>签到 + 完成认证</h3>
+                        </div>
+                        <span class="header-badge">Verified</span>
+                    </div>
+
+                    <div class="verify-steps">
+                        <div class="verify-step">
+                            <div class="step-dot active-step"></div>
+                            <div class="step-text">
+                                <h4>活动签到</h4>
+                                <p>到达集合点后扫码或定位签到，确认真实参与。</p>
+                            </div>
+                        </div>
+
+                        <div class="verify-step">
+                            <div class="step-dot mid-step"></div>
+                            <div class="step-text">
+                                <h4>跑步记录同步</h4>
+                                <p>自动关联本次跑步里程、时长与路线轨迹。</p>
+                            </div>
+                        </div>
+
+                        <div class="verify-step">
+                            <div class="step-dot"></div>
+                            <div class="step-text">
+                                <h4>完成认证</h4>
+                                <p>完成后点亮徽章、累计积分，并进入活动回顾。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-left">
+                            <p class="cert-label">本次活动认证状态</p>
+                            <h4>已完成 3 / 4</h4>
+                            <p class="cert-desc">再完成一次即可解锁 “连续参与者” 徽章。</p>
+                        </div>
+                        <button class="primary-btn" type="button">去打卡</button>
+                    </div>
+                </section>
+
+                <section class="section-card recommend-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>按配速 / 目标智能推荐</h3>
+                        </div>
+                        <span class="header-badge">AI Match</span>
+                    </div>
+
+                    <div class="recommend-list">
+                        <article class="recommend-item featured-item">
+                            <div class="recommend-top">
+                                <div>
+                                    <h4>5km 新手减脂夜跑</h4>
+                                    <p>滨海湾步道 · 今晚 19:30</p>
+                                </div>
+                                <span class="match-score">96%</span>
+                            </div>
+
+                            <div class="meta-row">
+                                <span>推荐原因：配速匹配</span>
+                                <span>目标一致：减脂</span>
+                            </div>
+
+                            <div class="tag-row">
+                                <span class="tag-chip">6'20" - 7'00"</span>
+                                <span class="tag-chip">新手友好</span>
+                                <span class="tag-chip">女生友好</span>
+                            </div>
+
+                            <div class="action-row">
+                                <button class="primary-btn" type="button">立即报名</button>
+                                <button class="ghost-btn" type="button">查看详情</button>
+                            </div>
+                        </article>
+
+                        <article class="recommend-item">
+                            <div class="recommend-top">
+                                <div>
+                                    <h4>周末 10km 进阶耐力跑</h4>
+                                    <p>东海岸公园 · 周六 06:45</p>
+                                </div>
+                                <span class="match-score light-score">88%</span>
+                            </div>
+
+                            <div class="meta-row">
+                                <span>推荐原因：提升耐力</span>
+                                <span>社团发起：PaceUp</span>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="section-card activity-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>热门跑步活动</h3>
+                        </div>
+                        <span class="see-more">查看全部</span>
+                    </div>
+
+                    <div class="activity-list">
+                        <article class="activity-item">
+                            <div class="activity-icon">🌙</div>
+                            <div class="activity-info">
+                                <h4>城市夜跑放松局</h4>
+                                <p>今天 20:00 · 4km · 轻松配速 · 余 8 位</p>
+                                <div class="mini-tag-row">
+                                    <span>公开活动</span>
+                                    <span>社交向</span>
+                                </div>
+                            </div>
+                            <button class="join-btn" type="button">参加</button>
+                        </article>
+
+                        <article class="activity-item">
+                            <div class="activity-icon warm-icon">🔥</div>
+                            <div class="activity-info">
+                                <h4>21 天燃脂挑战计划</h4>
+                                <p>连续挑战 · 每日打卡 · 完成可得徽章</p>
+                                <div class="mini-tag-row">
+                                    <span>目标型</span>
+                                    <span>挑战赛</span>
+                                </div>
+                            </div>
+                            <button class="join-btn alt-btn" type="button">加入</button>
+                        </article>
+
+                        <article class="activity-item">
+                            <div class="activity-icon soft-icon">🏞️</div>
+                            <div class="activity-info">
+                                <h4>周日清晨滨水长距离跑</h4>
+                                <p>周日 06:30 · 12km · 进阶组</p>
+                                <div class="mini-tag-row">
+                                    <span>LSD</span>
+                                    <span>社团活动</span>
+                                </div>
+                            </div>
+                            <button class="join-btn" type="button">报名</button>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="dual-grid">
+                    <section class="section-card club-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>社团 + 跑搭子</h3>
+                            </div>
+                        </div>
+
+                        <div class="club-block">
+                            <div class="club-item">
+                                <div class="club-text">
+                                    <h4>创建社团</h4>
+                                    <p>建立专属跑团，发布训练计划与活动。</p>
+                                </div>
+                                <button class="small-btn" type="button">创建</button>
+                            </div>
+
+                            <div class="club-item">
+                                <div class="club-text">
+                                    <h4>管理社团</h4>
+                                    <p>审核成员、安排活动、维护公告与荣誉墙。</p>
+                                </div>
+                                <button class="small-btn soft-btn" type="button">管理</button>
+                            </div>
+
+                            <div class="club-item">
+                                <div class="club-text">
+                                    <h4>加入社团</h4>
+                                    <p>根据风格、目标与活跃度发现合适组织。</p>
+                                </div>
+                                <button class="small-btn" type="button">加入</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="section-card buddy-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>跑搭子匹配</h3>
+                            </div>
+                            <span class="header-badge">Buddy</span>
+                        </div>
+
+                        <div class="buddy-list">
+                            <article class="buddy-item">
+                                <div class="buddy-avatar">A</div>
+                                <div class="buddy-info">
+                                    <h4>Amy</h4>
+                                    <p>配速 6'40" · 想找夜跑搭子</p>
+                                </div>
+                                <button class="mini-btn" type="button">匹配</button>
+                            </article>
+
+                            <article class="buddy-item">
+                                <div class="buddy-avatar">J</div>
+                                <div class="buddy-info">
+                                    <h4>Jason</h4>
+                                    <p>5km 恢复跑 · 周三晚可约</p>
+                                </div>
+                                <button class="mini-btn light-btn-2" type="button">联系</button>
+                            </article>
+                        </div>
+                    </section>
+                </section>
+            </main>
+
+            <nav class="bottom-nav">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M4 11.5L12 5L20 11.5V19C20 19.55 19.55 20 19 20H15V14H9V20H5C4.45 20 4 19.55 4 19V11.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">首页</span>
+                </a>
+
+                <a href="running.html" class="nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="17.5" cy="5.5" r="2.5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M13 8L10.5 11.5L13.5 13.5L15.5 10.5L18 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10.5 11.5L8.5 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M7 9L10 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">跑步</span>
+                </a>
+
+                <a href="activity.html" class="nav-item active">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="4" y="5" width="16" height="15" rx="3" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M16 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M4 10H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="9" cy="14" r="1" fill="currentColor"/>
+                            <circle cx="12" cy="14" r="1" fill="currentColor"/>
+                            <circle cx="15" cy="14" r="1" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">活动</span>
+                </a>
+
+                <a href="profile.html" class="nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M5 20C5.8 16.8 8.43 15 12 15C15.57 15 18.2 16.8 19 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">个人</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+</body>
+</html>

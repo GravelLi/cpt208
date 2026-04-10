@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runova</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="app-shell">
+        <div class="phone-frame">
+            <header class="top-bar">
+                <div class="avatar-wrap">
+                    <img src="avatar.jpg" alt="用户头像" class="avatar">
+                </div>
+                <div class="header-text">
+                    <p class="mini-label">欢迎回来</p>
+                    <h1>Enola</h1>
+                </div>
+                <button class="notify-btn" aria-label="通知">
+                    🔔
+                </button>
+            </header>
+
+            <main class="main-content">
+                <section class="hero-card">
+                    <div class="hero-glow"></div>
+                    <div class="hero-text">
+                        <p class="hero-subtitle">今日状态</p>
+                        <h2>准备出发了吗？</h2>
+                        <p class="hero-desc">
+                            用一次轻松的跑步，开启今天的节奏。
+                        </p>
+                    </div>
+                </section>
+
+                <section class="calendar-mood-card">
+                    <div class="card-header">
+                        <h3>今天</h3>
+                        <span class="card-tag">April</span>
+                    </div>
+
+                    <div class="calendar-box">
+                        <div class="week-row">
+                            <span>一</span>
+                            <span>二</span>
+                            <span>三</span>
+                            <span>四</span>
+                            <span>五</span>
+                            <span>六</span>
+                            <span>日</span>
+                        </div>
+
+                        <div class="date-row">
+                            <span>14</span>
+                            <span>15</span>
+                            <span>16</span>
+                            <span class="active-date">17</span>
+                            <span>18</span>
+                            <span>19</span>
+                            <span>20</span>
+                        </div>
+                    </div>
+
+                    <div class="mood-section">
+                        <div class="mood-left">
+                            <p class="section-label">心情</p>
+                            <h4>热血满满</h4>
+                            <p class="section-note">适合来一次 3-5km 慢跑</p>
+                        </div>
+                        <div class="mood-emoji">🔥</div>
+                    </div>
+                </section>
+
+                <section class="activity-card">
+                    <div class="card-header">
+                        <h3>活动提示</h3>
+                        <span class="see-more">查看全部</span>
+                    </div>
+
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">🏃</div>
+                            <div class="activity-info">
+                                <h4>傍晚公园跑</h4>
+                                <p>今天 18:30 · 轻松配速训练</p>
+                            </div>
+                            <button class="join-btn">参加</button>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon">🎯</div>
+                            <div class="activity-info">
+                                <h4>本周目标</h4>
+                                <p>累计完成 12 km，还差 4.2 km</p>
+                            </div>
+                            <button class="join-btn alt-btn">查看</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <nav class="bottom-nav">
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M4 11.5L12 5L20 11.5V19C20 19.55 19.55 20 19 20H15V14H9V20H5C4.45 20 4 19.55 4 19V11.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">首页</span>
+                </a>
+
+                <a href="running.html" class="nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="17.5" cy="5.5" r="2.5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M13 8L10.5 11.5L13.5 13.5L15.5 10.5L18 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10.5 11.5L8.5 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M7 9L10 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">跑步</span>
+                </a>
+
+                <a href="activity.html" class="nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="4" y="5" width="16" height="15" rx="3" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M16 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M4 10H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="9" cy="14" r="1" fill="currentColor"/>
+                            <circle cx="12" cy="14" r="1" fill="currentColor"/>
+                            <circle cx="15" cy="14" r="1" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">活动</span>
+                </a>
+
+                <a href="profile.html" class="nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M5 20C5.8 16.8 8.43 15 12 15C15.57 15 18.2 16.8 19 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">个人</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+</body>
+</html>
