@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Runova</title>
+    <title>HerRun</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -17,84 +17,236 @@
                     <p class="mini-label">欢迎回来</p>
                     <h1>Enola</h1>
                 </div>
-                <button class="notify-btn" aria-label="通知">
-                    🔔
-                </button>
+                <button class="notify-btn" aria-label="通知">🔔</button>
             </header>
 
             <main class="main-content">
-                <section class="hero-card">
-                    <div class="hero-glow"></div>
-                    <div class="hero-text">
-                        <p class="hero-subtitle">今日状态</p>
-                        <h2>准备出发了吗？</h2>
-                        <p class="hero-desc">
-                            用一次轻松的跑步，开启今天的节奏。
-                        </p>
+                <section class="story-card hero-story-card">
+                    <div class="float-bubble bubble-1">💗</div>
+                    <div class="float-bubble bubble-2">✨</div>
+
+                    <div class="story-top">
+                        <div>
+                            <p class="story-kicker">Mood Mission</p>
+                            <h2>今天先照顾心情，再轻轻跑一点点</h2>
+                            <p class="story-desc">AI 根据你现在的 mood、最近睡眠、跑步习惯和周期状态，给你拼出了一个刚刚好的小任务。</p>
+                        </div>
+                        <div class="pet-wrap" aria-hidden="true">
+                            <div class="pet-face">૮ ˶ᵔ ᵕ ᵔ˶ ა</div>
+                            <p>陪你完成</p>
+                        </div>
+                    </div>
+
+                    <div class="mission-card">
+                        <div class="mission-main">
+                            <span class="mission-tag">今日小目标</span>
+                            <h3>18 分钟舒缓慢跑 + 3 分钟呼吸放松</h3>
+                            <p>只要完成就会点亮今天的 mood 星星，不看配速，不卷里程。</p>
+                        </div>
+                        <button class="primary-pill">开始任务</button>
+                    </div>
+
+                    <div class="why-row">
+                        <div class="why-chip">
+                            <span>🌤️</span>
+                            <div>
+                                <strong>当前 mood</strong>
+                                <p>轻微疲惫，更适合温柔目标</p>
+                            </div>
+                        </div>
+                        <div class="why-chip">
+                            <span>🩺</span>
+                            <div>
+                                <strong>健康信号</strong>
+                                <p>昨晚睡眠一般，恢复指数中等</p>
+                            </div>
+                        </div>
+                        <div class="why-chip">
+                            <span>🌙</span>
+                            <div>
+                                <strong>周期提醒</strong>
+                                <p>黄体期，情绪更需要被照顾</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
-                <section class="calendar-mood-card">
-                    <div class="card-header">
-                        <h3>今天</h3>
-                        <span class="card-tag">April</span>
+                <section class="story-card plan-card">
+                    <div class="card-header compact-header">
+                        <div>
+                            <p class="eyebrow">今天不是硬跑，是被好好照顾的跑</p>
+                            <h3>你的专属低压陪跑计划</h3>
+                        </div>
+                        <button class="soft-action">换轻一点</button>
                     </div>
 
-                    <div class="calendar-box">
-                        <div class="week-row">
-                            <span>一</span>
-                            <span>二</span>
-                            <span>三</span>
-                            <span>四</span>
-                            <span>五</span>
-                            <span>六</span>
-                            <span>日</span>
+                    <div class="plan-progress">
+                        <div class="progress-head">
+                            <span>今日完成度</span>
+                            <strong>1 / 3</strong>
                         </div>
-
-                        <div class="date-row">
-                            <span>14</span>
-                            <span>15</span>
-                            <span>16</span>
-                            <span class="active-date">17</span>
-                            <span>18</span>
-                            <span>19</span>
-                            <span>20</span>
+                        <div class="progress-bar">
+                            <span></span>
                         </div>
                     </div>
 
-                    <div class="mood-section">
-                        <div class="mood-left">
-                            <p class="section-label">心情</p>
-                            <h4>热血满满</h4>
-                            <p class="section-note">适合来一次 3-5km 慢跑</p>
+                    <div class="plan-list">
+                        <div class="plan-step active-plan-step">
+                            <div class="plan-step-left">
+                                <div class="plan-icon">🫧</div>
+                                <div>
+                                    <h4>开始前 · mood check-in</h4>
+                                    <p>先选一下你现在更像“有点累 / 想透气 / 想被安慰”。系统会自动微调今天任务强度。</p>
+                                </div>
+                            </div>
+                            <button class="mini-cta">去选择</button>
                         </div>
-                        <div class="mood-emoji">🔥</div>
+
+                        <div class="plan-step">
+                            <div class="plan-step-left">
+                                <div class="plan-icon">👟</div>
+                                <div>
+                                    <h4>跑步中 · 12 分钟就能算成功</h4>
+                                    <p>如果手表检测到心率偏高或你点了“有点撑”，任务会自动降级成步跑结合，不让坚持变成压力。</p>
+                                </div>
+                            </div>
+                            <button class="mini-ghost">自动调节</button>
+                        </div>
+
+                        <div class="plan-step">
+                            <div class="plan-step-left">
+                                <div class="plan-icon">💞</div>
+                                <div>
+                                    <h4>结束后 · 30 秒恢复回顾</h4>
+                                    <p>记录一下跑后心情，AI 会把 mood、恢复状态和周期一起更新，给你明天更贴合的建议。</p>
+                                </div>
+                            </div>
+                            <button class="mini-cta">完成后填</button>
+                        </div>
+                    </div>
+
+                    <div class="smart-switch-card">
+                        <div class="smart-copy">
+                            <p class="smart-kicker">智能降压开关已开启</p>
+                            <h4>今天不舒服，也不会“失败”</h4>
+                            <p>跑不动时会自动切到 10 分钟步行 + 拉伸，你仍然可以拿到今天的 mood 星星。</p>
+                        </div>
+                        <div class="switch-badge">ON</div>
                     </div>
                 </section>
 
-                <section class="activity-card">
-                    <div class="card-header">
-                        <h3>活动提示</h3>
-                        <span class="see-more">查看全部</span>
+                <section class="story-card star-card">
+                    <div class="card-header compact-header">
+                        <div>
+                            <h3>本周 mood 星图</h3>
+                        </div>
+                        <button class="soft-action">查看规则</button>
                     </div>
 
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-icon">🏃</div>
-                            <div class="activity-info">
-                                <h4>傍晚公园跑</h4>
-                                <p>今天 18:30 · 轻松配速训练</p>
+                    <div class="star-hero">
+                        <div class="star-hero-left">
+                            <p class="star-kicker">今天完成后可点亮</p>
+                            <h4>第 5 颗「安稳星」</h4>
+                            <p>安稳星代表你在照顾情绪的同时维持了运动习惯。连续点亮会让系统更懂你什么时候该 push，什么时候该放轻。</p>
+                        </div>
+                        <div class="star-big">⭐</div>
+                    </div>
+
+                    <div class="week-stars">
+                        <div class="day-star done">
+                            <span class="day-label">一</span>
+                            <span class="day-icon">⭐</span>
+                        </div>
+                        <div class="day-star done">
+                            <span class="day-label">二</span>
+                            <span class="day-icon">🌙</span>
+                        </div>
+                        <div class="day-star done">
+                            <span class="day-label">三</span>
+                            <span class="day-icon">⭐</span>
+                        </div>
+                        <div class="day-star active">
+                            <span class="day-label">四</span>
+                            <span class="day-icon">✨</span>
+                        </div>
+                        <div class="day-star">
+                            <span class="day-label">五</span>
+                            <span class="day-icon">·</span>
+                        </div>
+                        <div class="day-star">
+                            <span class="day-label">六</span>
+                            <span class="day-icon">·</span>
+                        </div>
+                        <div class="day-star">
+                            <span class="day-label">日</span>
+                            <span class="day-icon">·</span>
+                        </div>
+                    </div>
+
+                    <div class="star-rule-grid">
+                        <div class="star-rule">
+                            <div class="rule-icon">⭐</div>
+                            <div>
+                                <h4>安稳星</h4>
+                                <p>完成低压任务即可获得，帮助系统稳定你的轻松跑模板。</p>
                             </div>
-                            <button class="join-btn">参加</button>
+                        </div>
+                        <div class="star-rule">
+                            <div class="rule-icon">🌙</div>
+                            <div>
+                                <h4>休息星</h4>
+                                <p>主动选择降压或休息也能获得，不鼓励硬撑。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="star-benefits">
+                        <div class="benefit-header">
+                            <span>已解锁 2 / 4</span>
                         </div>
 
-                        <div class="activity-item">
-                            <div class="activity-icon">🎯</div>
-                            <div class="activity-info">
-                                <h4>本周目标</h4>
-                                <p>累计完成 12 km，还差 4.2 km</p>
+                        <div class="benefit-item unlocked">
+                            <div class="benefit-left">
+                                <span class="benefit-icon">🎧</span>
+                                <div>
+                                    <h5>夜跑安抚音频</h5>
+                                    <p>连续 3 颗星后，自动推荐更适合你夜间心情的陪跑音频。</p>
+                                </div>
                             </div>
-                            <button class="join-btn alt-btn">查看</button>
+                            <span class="benefit-badge">已开</span>
+                        </div>
+
+                        <div class="benefit-item unlocked">
+                            <div class="benefit-left">
+                                <span class="benefit-icon">🪄</span>
+                                <div>
+                                    <h5>明日任务更贴合</h5>
+                                    <p>连续记录后，AI 会更准确判断你该轻跑、散步还是彻底休息。</p>
+                                </div>
+                            </div>
+                            <span class="benefit-badge">已开</span>
+                        </div>
+
+                        <div class="benefit-item">
+                            <div class="benefit-left">
+                                <span class="benefit-icon">🫶</span>
+                                <div>
+                                    <h5>免负罪跳过卡</h5>
+                                    <p>累计 5 颗星可获得 1 次“今天休息也算完成”的无压力通行。</p>
+                                </div>
+                            </div>
+                            <span class="benefit-badge lock">差 1 颗</span>
+                        </div>
+
+                        <div class="benefit-item">
+                            <div class="benefit-left">
+                                <span class="benefit-icon">🌸</span>
+                                <div>
+                                    <h5>经期轻跑模板</h5>
+                                    <p>累计 7 颗星后，系统会自动生成你的周期友好跑步版本。</p>
+                                </div>
+                            </div>
+                            <span class="benefit-badge lock">差 3 颗</span>
                         </div>
                     </div>
                 </section>

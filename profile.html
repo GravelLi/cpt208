@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Runova</title>
+    <title>HerRun</title>
     <link rel="stylesheet" href="profile.css">
 </head>
 <body>
@@ -11,9 +11,15 @@
         <div class="phone-frame">
             <header class="top-bar">
                 <div class="header-main">
+                    <p class="mini-label">My Profile</p>
                     <h1>个人主页</h1>
                 </div>
-                <button class="icon-btn" type="button" aria-label="设置">⚙</button>
+                <button class="icon-btn" type="button" aria-label="设置">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 8.8A3.2 3.2 0 1 0 12 15.2A3.2 3.2 0 1 0 12 8.8Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M19.4 13.5C19.47 13.01 19.5 12.51 19.5 12C19.5 11.49 19.47 10.99 19.4 10.5L21 9.2L19.5 6.6L17.5 7.1C16.73 6.45 15.84 5.95 14.87 5.67L14.2 3.7H9.8L9.13 5.67C8.16 5.95 7.27 6.45 6.5 7.1L4.5 6.6L3 9.2L4.6 10.5C4.53 10.99 4.5 11.49 4.5 12C4.5 12.51 4.53 13.01 4.6 13.5L3 14.8L4.5 17.4L6.5 16.9C7.27 17.55 8.16 18.05 9.13 18.33L9.8 20.3H14.2L14.87 18.33C15.84 18.05 16.73 17.55 17.5 16.9L19.5 17.4L21 14.8L19.4 13.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </header>
 
             <main class="main-content">
@@ -28,243 +34,139 @@
                                 <h2>Enola</h2>
                                 <span class="level-badge">Lv. 08</span>
                             </div>
+
                             <p class="profile-bio">The world is my oyster, which I with sword will open.</p>
-
-                            <div class="identity-tags">
-                                <span class="identity-tag active-tag">夜跑选手</span>
-                                <span class="identity-tag">社交跑爱好者</span>
-                                <span class="identity-tag">恢复进阶中</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile-meta">
-                        <div class="meta-chip">
-                            <span class="meta-label">常用配速</span>
-                            <strong>6'30"</strong>
-                        </div>
-                        <div class="meta-chip">
-                            <span class="meta-label">本月里程</span>
-                            <strong>28.6 km</strong>
-                        </div>
-                        <div class="meta-chip">
-                            <span class="meta-label">连续打卡</span>
-                            <strong>9 天</strong>
                         </div>
                     </div>
                 </section>
 
-                <section class="section-card goal-card">
+                <section class="record-strip">
+                    <article class="record-item">
+                        <strong>28.6</strong>
+                        <span>本月 km</span>
+                    </article>
+                    <article class="record-item">
+                        <strong>9</strong>
+                        <span>连续记录</span>
+                    </article>
+                    <article class="record-item">
+                        <strong>42</strong>
+                        <span>总跑次</span>
+                    </article>
+                </section>
+
+                <section class="section-card device-card">
                     <div class="card-header">
                         <div>
-                            <p class="section-label">目标面板</p>
-                            <h3>本月跑步目标</h3>
-                        </div>
-                        <span class="header-badge">68%</span>
-                    </div>
-
-                    <div class="goal-main">
-                        <div class="goal-text">
-                            <h4>目标 40 km</h4>
-                            <p>你已经完成 28.6 km，本周再参加 1 次轻松夜跑更容易达成目标。</p>
-                        </div>
-                        <button class="primary-btn" type="button">查看推荐</button>
-                    </div>
-
-                    <div class="progress-track">
-                        <div class="progress-fill"></div>
-                    </div>
-
-                    <div class="goal-footer">
-                        <span>已完成 28.6 km</span>
-                        <span>剩余 11.4 km</span>
-                    </div>
-                </section>
-
-                <section class="overview-grid">
-                    <article class="overview-card">
-                        <span class="overview-num">06</span>
-                        <span class="overview-label">已报名活动</span>
-                    </article>
-
-                    <article class="overview-card">
-                        <span class="overview-num">02</span>
-                        <span class="overview-label">加入社团</span>
-                    </article>
-
-                    <article class="overview-card">
-                        <span class="overview-num">04</span>
-                        <span class="overview-label">完成认证</span>
-                    </article>
-
-                    <article class="overview-card">
-                        <span class="overview-num">03</span>
-                        <span class="overview-label">跑搭子</span>
-                    </article>
-                </section>
-
-                <section class="section-card journey-card">
-                    <div class="card-header">
-                        <div>
-                            <p class="section-label">身份画像</p>
-                            <h3>你的跑步风格</h3>
+                            <p class="section-label">设备与安全</p>
+                            <h3>同步与保护</h3>
                         </div>
                     </div>
 
-                    <div class="journey-list">
-                        <div class="journey-item">
-                            <div class="journey-icon">🌙</div>
-                            <div class="journey-info">
-                                <h4>夜跑偏好明显</h4>
-                                <p>最近参加的 6 次活动中，有 4 次在晚间进行。</p>
-                            </div>
-                        </div>
-
-                        <div class="journey-item">
-                            <div class="journey-icon warm-icon">🤝</div>
-                            <div class="journey-info">
-                                <h4>偏好社交型活动</h4>
-                                <p>你更常加入轻松配速、多人参与的陪跑活动。</p>
-                            </div>
-                        </div>
-
-                        <div class="journey-item">
-                            <div class="journey-icon soft-icon">📈</div>
-                            <div class="journey-info">
-                                <h4>正在恢复进阶</h4>
-                                <p>系统判断你最近更适合 4-6km 的稳定节奏训练。</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="double-section">
-                    <section class="section-card badge-card">
-                        <div class="card-header">
-                            <div>
-                                <p class="section-label">成长成就</p>
-                                <h3>徽章墙</h3>
-                            </div>
-                            <span class="see-more">全部</span>
-                        </div>
-
-                        <div class="badge-grid">
-                            <div class="badge-item unlocked">
-                                <div class="badge-icon">🔥</div>
-                                <p>连续参与者</p>
-                            </div>
-
-                            <div class="badge-item unlocked">
-                                <div class="badge-icon">🌙</div>
-                                <p>夜跑达人</p>
-                            </div>
-
-                            <div class="badge-item unlocked">
-                                <div class="badge-icon">🤝</div>
-                                <p>社交跑友</p>
-                            </div>
-
-                            <div class="badge-item locked">
-                                <div class="badge-icon">🏅</div>
-                                <p>月度突破</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="section-card club-impact-card">
-                        <div class="card-header">
-                            <div>
-                                <p class="section-label">社区影响力</p>
-                                <h3>社团贡献值</h3>
-                            </div>
-                            <span class="header-badge">Top 20%</span>
-                        </div>
-
-                        <div class="impact-box">
-                            <div class="impact-stat">
-                                <span class="impact-num">128</span>
-                                <span class="impact-name">总贡献值</span>
-                            </div>
-
-                            <div class="impact-points">
-                                <div class="impact-row">
-                                    <span>参加社团活动</span>
-                                    <strong>+72</strong>
+                    <div class="device-list">
+                        <article class="device-item">
+                            <div class="device-left">
+                                <div class="device-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <rect x="7" y="2.5" width="10" height="19" rx="3" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M10 6H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <circle cx="12" cy="17" r="1" fill="currentColor"/>
+                                    </svg>
                                 </div>
-                                <div class="impact-row">
-                                    <span>帮助新成员</span>
-                                    <strong>+26</strong>
-                                </div>
-                                <div class="impact-row">
-                                    <span>完成挑战认证</span>
-                                    <strong>+30</strong>
+                                <div class="device-info">
+                                    <h4>Wearable 设备</h4>
+                                    <p>Apple Watch 已连接，数据同步正常</p>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                </section>
+                            <button class="ghost-btn" type="button">管理</button>
+                        </article>
 
-                <section class="section-card social-card">
-                    <div class="card-header">
-                        <div>
-                            <p class="section-label">我的关系</p>
-                            <h3>社团与跑搭子</h3>
-                        </div>
-                    </div>
-
-                    <div class="social-list">
-                        <article class="social-item">
-                            <div class="social-avatar">P</div>
-                            <div class="social-info">
-                                <h4>PaceUp Club</h4>
-                                <p>成员身份：活跃成员 · 本周 2 场活动</p>
+                        <article class="device-item">
+                            <div class="device-left">
+                                <div class="device-icon soft-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M12 3L19.5 6V11.5C19.5 16.3 16.4 20.7 12 22C7.6 20.7 4.5 16.3 4.5 11.5V6L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                        <path d="M9.5 12H14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M12 9.5V14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <div class="device-info">
+                                    <h4>紧急联系人</h4>
+                                    <p>已设置 1 位联系人，SOS 功能可用</p>
+                                </div>
                             </div>
                             <button class="ghost-btn" type="button">查看</button>
                         </article>
 
-                        <article class="social-item">
-                            <div class="social-avatar buddy-avatar">A</div>
-                            <div class="social-info">
-                                <h4>Amy</h4>
-                                <p>最近一起完成 2 次夜跑 · 配速接近</p>
+                        <article class="device-item">
+                            <div class="device-left">
+                                <div class="device-icon warm-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M18 8A6 6 0 1 1 6 8C6 5.79 7.79 4 10 4H11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M18 8V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M18 8H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <div class="device-info">
+                                    <h4>周期追踪</h4>
+                                    <p>周期模式已开启，用于调整健康展示</p>
+                                </div>
                             </div>
-                            <button class="ghost-btn" type="button">联系</button>
+                            <button class="ghost-btn" type="button">编辑</button>
                         </article>
                     </div>
                 </section>
 
-                <section class="section-card timeline-card">
+                <section class="section-card manage-card">
                     <div class="card-header">
                         <div>
-                            <p class="section-label">活动履历</p>
-                            <h3>最近动态</h3>
+                            <p class="section-label">账户管理</p>
+                            <h3>常用入口</h3>
                         </div>
                     </div>
 
-                    <div class="timeline-list">
-                        <div class="timeline-item">
-                            <div class="timeline-dot active-dot"></div>
-                            <div class="timeline-content">
-                                <h4>完成「城市夜跑放松局」签到认证</h4>
-                                <p>今天 20:48 · 获得 1 次活动完成记录</p>
-                            </div>
-                        </div>
+                    <div class="manage-list">
+                        <button class="manage-item" type="button">
+                            <span class="manage-icon">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M5 20C5.8 16.8 8.43 15 12 15C15.57 15 18.2 16.8 19 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                            <span class="manage-text">编辑资料</span>
+                        </button>
 
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>加入 PaceUp Club 社团</h4>
-                                <p>昨天 · 解锁社团活动推荐</p>
-                            </div>
-                        </div>
+                        <button class="manage-item" type="button">
+                            <span class="manage-icon">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M9 18V7.5L19 5V15.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="7" cy="18" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="17" cy="15.5" r="3" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </span>
+                            <span class="manage-text">音乐联动</span>
+                        </button>
 
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>与 Amy 完成一次 5km 恢复跑</h4>
-                                <p>2 天前 · 轻松配速 6'42"</p>
-                            </div>
-                        </div>
+                        <button class="manage-item" type="button">
+                            <span class="manage-icon">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M8 11V8A4 4 0 0 1 16 8V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                            <span class="manage-text">隐私设置</span>
+                        </button>
+
+                        <button class="manage-item" type="button">
+                            <span class="manage-icon">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <rect x="7" y="2.5" width="10" height="19" rx="3" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M10 6H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="12" cy="17" r="1" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <span class="manage-text">设备管理</span>
+                        </button>
                     </div>
                 </section>
             </main>
@@ -304,7 +206,7 @@
                             <circle cx="15" cy="14" r="1" fill="currentColor"/>
                         </svg>
                     </span>
-                    <span class="nav-text">活动</span>
+                    <span class="nav-text">健康</span>
                 </a>
 
                 <a href="profile.html" class="nav-item active">

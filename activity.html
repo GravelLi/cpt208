@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Runova</title>
+    <title>HerRun</title>
     <link rel="stylesheet" href="activity.css">
 </head>
 <body>
@@ -11,229 +11,231 @@
         <div class="phone-frame">
             <header class="top-bar">
                 <div class="header-main">
-                    <h1>活动中心</h1>
+                    <p class="mini-label">Synced with wearable</p>
+                    <h1>健康数据</h1>
                 </div>
-                <button class="create-btn" type="button">+ 发起</button>
+                <button class="sync-btn" type="button">⌚ 已同步</button>
             </header>
 
             <main class="main-content">
-                <section class="quick-filter-section">
-                    <button class="filter-pill active-pill" type="button">推荐</button>
-                    <button class="filter-pill" type="button">附近</button>
-                    <button class="filter-pill" type="button">社团</button>
-                    <button class="filter-pill" type="button">新手友好</button>
-                    <button class="filter-pill" type="button">夜跑</button>
-                </section>
-
-                <section class="section-card verify-card">
-                    <div class="card-header">
+                <section class="section-shell">
+                    <div class="section-head">
                         <div>
-                            <h3>签到 + 完成认证</h3>
+                            <h3>核心指标</h3>
+                            <p class="sub-copy">今天的身体表现与近期变化</p>
                         </div>
-                        <span class="header-badge">Verified</span>
+                        <span class="card-tag">Live</span>
                     </div>
 
-                    <div class="verify-steps">
-                        <div class="verify-step">
-                            <div class="step-dot active-step"></div>
-                            <div class="step-text">
-                                <h4>活动签到</h4>
-                                <p>到达集合点后扫码或定位签到，确认真实参与。</p>
-                            </div>
-                        </div>
-
-                        <div class="verify-step">
-                            <div class="step-dot mid-step"></div>
-                            <div class="step-text">
-                                <h4>跑步记录同步</h4>
-                                <p>自动关联本次跑步里程、时长与路线轨迹。</p>
-                            </div>
-                        </div>
-
-                        <div class="verify-step">
-                            <div class="step-dot"></div>
-                            <div class="step-text">
-                                <h4>完成认证</h4>
-                                <p>完成后点亮徽章、累计积分，并进入活动回顾。</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-left">
-                            <p class="cert-label">本次活动认证状态</p>
-                            <h4>已完成 3 / 4</h4>
-                            <p class="cert-desc">再完成一次即可解锁 “连续参与者” 徽章。</p>
-                        </div>
-                        <button class="primary-btn" type="button">去打卡</button>
-                    </div>
-                </section>
-
-                <section class="section-card recommend-card">
-                    <div class="card-header">
-                        <div>
-                            <h3>按配速 / 目标智能推荐</h3>
-                        </div>
-                        <span class="header-badge">AI Match</span>
-                    </div>
-
-                    <div class="recommend-list">
-                        <article class="recommend-item featured-item">
-                            <div class="recommend-top">
+                    <div class="metrics-mosaic">
+                        <article class="metric-main-card">
+                            <div class="metric-main-top">
                                 <div>
-                                    <h4>5km 新手减脂夜跑</h4>
-                                    <p>滨海湾步道 · 今晚 19:30</p>
+                                    <span class="metric-eyebrow">恢复核心</span>
+                                    <h4>平均心率</h4>
                                 </div>
-                                <span class="match-score">96%</span>
+                                <span class="metric-chip">Aerobic</span>
                             </div>
 
-                            <div class="meta-row">
-                                <span>推荐原因：配速匹配</span>
-                                <span>目标一致：减脂</span>
+                            <div class="metric-main-value">
+                                <strong>128</strong>
+                                <span>bpm</span>
                             </div>
 
-                            <div class="tag-row">
-                                <span class="tag-chip">6'20" - 7'00"</span>
-                                <span class="tag-chip">新手友好</span>
-                                <span class="tag-chip">女生友好</span>
-                            </div>
+                            <p class="metric-main-desc">
+                                今天整体落在更适合耐力与燃脂的区间，节奏控制比较稳定。
+                            </p>
 
-                            <div class="action-row">
-                                <button class="primary-btn" type="button">立即报名</button>
-                                <button class="ghost-btn" type="button">查看详情</button>
+                            <div class="metric-main-footer">
+                                <div class="mini-stat">
+                                    <span>静息心率</span>
+                                    <strong>58</strong>
+                                </div>
+                                <div class="mini-stat">
+                                    <span>恢复分数</span>
+                                    <strong>82</strong>
+                                </div>
                             </div>
                         </article>
 
-                        <article class="recommend-item">
-                            <div class="recommend-top">
-                                <div>
-                                    <h4>周末 10km 进阶耐力跑</h4>
-                                    <p>东海岸公园 · 周六 06:45</p>
-                                </div>
-                                <span class="match-score light-score">88%</span>
+                        <article class="metric-mid-card pace-card">
+                            <span class="metric-eyebrow dark-eyebrow">Pace</span>
+                            <h4>平均配速</h4>
+                            <div class="metric-mid-value">
+                                <strong>6'18"</strong>
+                                <span>/km</span>
                             </div>
+                            <p>近 7 天配速波动更小，节奏感正在变稳。</p>
+                        </article>
 
-                            <div class="meta-row">
-                                <span>推荐原因：提升耐力</span>
-                                <span>社团发起：PaceUp</span>
+                        <article class="metric-mid-card fat-card">
+                            <span class="metric-eyebrow dark-eyebrow">Body</span>
+                            <h4>体脂率</h4>
+                            <div class="metric-mid-value">
+                                <strong>24.8</strong>
+                                <span>%</span>
                             </div>
+                            <p>近 30 天下降 0.4%，减脂节奏正常。</p>
+                        </article>
+
+                        <article class="metric-pill-card sleep-pill">
+                            <div class="pill-top">
+                                <span class="pill-label">睡眠均值</span>
+                                <span class="pill-trend">↗</span>
+                            </div>
+                            <strong>7.1 h</strong>
+                            <p>近一周略回升</p>
+                        </article>
+
+                        <article class="metric-pill-card kcal-pill">
+                            <div class="pill-top">
+                                <span class="pill-label">消耗热量</span>
+                                <span class="pill-trend">◎</span>
+                            </div>
+                            <strong>428 kcal</strong>
+                            <p>本次训练记录</p>
                         </article>
                     </div>
                 </section>
 
-                <section class="section-card activity-card">
-                    <div class="card-header">
+                <section class="section-shell">
+                    <div class="section-head">
                         <div>
-                            <h3>热门跑步活动</h3>
+                            <h3>近 7 天趋势</h3>
                         </div>
-                        <span class="see-more">查看全部</span>
+                        <span class="card-tag soft-tag">7 Days</span>
                     </div>
 
-                    <div class="activity-list">
-                        <article class="activity-item">
-                            <div class="activity-icon">🌙</div>
-                            <div class="activity-info">
-                                <h4>城市夜跑放松局</h4>
-                                <p>今天 20:00 · 4km · 轻松配速 · 余 8 位</p>
-                                <div class="mini-tag-row">
-                                    <span>公开活动</span>
-                                    <span>社交向</span>
-                                </div>
+                    <div class="trend-layout">
+                        <article class="trend-main-card">
+                            <div class="trend-chart">
+                                <div class="chart-grid"></div>
+                                <svg class="trend-svg" viewBox="0 0 300 150" preserveAspectRatio="none" aria-hidden="true">
+                                    <path d="M10 105 C40 95, 60 60, 95 72 S160 96, 205 58 S260 48, 290 32"
+                                          fill="none" stroke="#f45f52" stroke-width="4.5" stroke-linecap="round"/>
+                                    <path d="M10 118 C40 112, 75 125, 110 95 S170 55, 210 82 S255 100, 290 76"
+                                          fill="none" stroke="#ffb24a" stroke-width="4.5" stroke-linecap="round"/>
+                                </svg>
+                                <span class="chart-point p1"></span>
+                                <span class="chart-point p2"></span>
+                                <span class="chart-point p3"></span>
+                                <span class="chart-point p4"></span>
                             </div>
-                            <button class="join-btn" type="button">参加</button>
+
+                            <div class="trend-legend">
+                                <span><i class="legend-dot heart-dot"></i>恢复 / 心率趋势</span>
+                                <span><i class="legend-dot load-dot"></i>训练负荷</span>
+                            </div>
+
+                            <div class="day-strip">
+                                <span>Mon</span>
+                                <span>Tue</span>
+                                <span>Wed</span>
+                                <span>Thu</span>
+                                <span>Fri</span>
+                                <span>Sat</span>
+                                <span>Sun</span>
+                            </div>
                         </article>
 
-                        <article class="activity-item">
-                            <div class="activity-icon warm-icon">🔥</div>
-                            <div class="activity-info">
-                                <h4>21 天燃脂挑战计划</h4>
-                                <p>连续挑战 · 每日打卡 · 完成可得徽章</p>
-                                <div class="mini-tag-row">
-                                    <span>目标型</span>
-                                    <span>挑战赛</span>
-                                </div>
-                            </div>
-                            <button class="join-btn alt-btn" type="button">加入</button>
-                        </article>
-
-                        <article class="activity-item">
-                            <div class="activity-icon soft-icon">🏞️</div>
-                            <div class="activity-info">
-                                <h4>周日清晨滨水长距离跑</h4>
-                                <p>周日 06:30 · 12km · 进阶组</p>
-                                <div class="mini-tag-row">
-                                    <span>LSD</span>
-                                    <span>社团活动</span>
-                                </div>
-                            </div>
-                            <button class="join-btn" type="button">报名</button>
-                        </article>
-                    </div>
-                </section>
-
-                <section class="dual-grid">
-                    <section class="section-card club-card">
-                        <div class="card-header">
-                            <div>
-                                <h3>社团 + 跑搭子</h3>
-                            </div>
-                        </div>
-
-                        <div class="club-block">
-                            <div class="club-item">
-                                <div class="club-text">
-                                    <h4>创建社团</h4>
-                                    <p>建立专属跑团，发布训练计划与活动。</p>
-                                </div>
-                                <button class="small-btn" type="button">创建</button>
-                            </div>
-
-                            <div class="club-item">
-                                <div class="club-text">
-                                    <h4>管理社团</h4>
-                                    <p>审核成员、安排活动、维护公告与荣誉墙。</p>
-                                </div>
-                                <button class="small-btn soft-btn" type="button">管理</button>
-                            </div>
-
-                            <div class="club-item">
-                                <div class="club-text">
-                                    <h4>加入社团</h4>
-                                    <p>根据风格、目标与活跃度发现合适组织。</p>
-                                </div>
-                                <button class="small-btn" type="button">加入</button>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="section-card buddy-card">
-                        <div class="card-header">
-                            <div>
-                                <h3>跑搭子匹配</h3>
-                            </div>
-                            <span class="header-badge">Buddy</span>
-                        </div>
-
-                        <div class="buddy-list">
-                            <article class="buddy-item">
-                                <div class="buddy-avatar">A</div>
-                                <div class="buddy-info">
-                                    <h4>Amy</h4>
-                                    <p>配速 6'40" · 想找夜跑搭子</p>
-                                </div>
-                                <button class="mini-btn" type="button">匹配</button>
+                        <div class="trend-side-stack">
+                            <article class="side-insight rise-card">
+                                <span class="side-label">恢复趋势</span>
+                                <strong>上升</strong>
+                                <p>最近 4 天恢复更稳定</p>
                             </article>
 
-                            <article class="buddy-item">
-                                <div class="buddy-avatar">J</div>
-                                <div class="buddy-info">
-                                    <h4>Jason</h4>
-                                    <p>5km 恢复跑 · 周三晚可约</p>
-                                </div>
-                                <button class="mini-btn light-btn-2" type="button">联系</button>
+                            <article class="side-insight load-card">
+                                <span class="side-label">负荷趋势</span>
+                                <strong>略高</strong>
+                                <p>跑量增长快于上周</p>
                             </article>
                         </div>
-                    </section>
+                    </div>
+                </section>
+
+                <section class="section-shell">
+                    <div class="section-head">
+                        <div>
+                            <h3>减脂与目标进度</h3>
+                            <p class="sub-copy">看长期节奏，不被单天波动影响</p>
+                        </div>
+                        <span class="card-tag warm-tag">Progress</span>
+                    </div>
+
+                    <div class="progress-visual-layout">
+                        <article class="progress-ring-card">
+                            <div class="ring-wrap">
+                                <div class="ring ring-1">
+                                    <div class="ring-inner">
+                                        <strong>-0.4%</strong>
+                                        <span>本月体脂</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>减脂节奏稳定，没有出现过快下降。</p>
+                        </article>
+
+                        <div class="progress-track-stack">
+                            <article class="track-card highlight-track">
+                                <div class="track-head">
+                                    <h4>月跑量目标</h4>
+                                    <span>42 / 60 km</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <span class="progress-fill progress-fill-2"></span>
+                                </div>
+                                <p>当前完成度 70%</p>
+                            </article>
+
+                            <article class="track-card">
+                                <div class="track-head">
+                                    <h4>睡眠达标率</h4>
+                                    <span>5 / 7 天</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <span class="progress-fill progress-fill-3"></span>
+                                </div>
+                                <p>恢复效率正在改善</p>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-shell">
+                    <div class="section-head">
+                        <div>
+                            <h3>AI 数据分析</h3>
+                            <p class="sub-copy">更像数据翻译，不只是说明文字</p>
+                        </div>
+                        <span class="card-tag ai-tag">AI</span>
+                    </div>
+
+                    <div class="ai-conversation">
+                        <article class="ai-bubble bubble-left">
+                            <div class="ai-avatar">AI</div>
+                            <div class="ai-content">
+                                <h4>静息心率下降，说明恢复在改善</h4>
+                                <p>最近一周静息心率低于上周平均，这通常代表身体恢复更稳定。</p>
+                            </div>
+                        </article>
+
+                        <article class="ai-bubble bubble-right">
+                            <div class="ai-content">
+                                <h4>体脂趋势正常，不用焦虑短期波动</h4>
+                                <p>单日体重容易受水分影响，本月体脂趋势更能说明真实变化。</p>
+                            </div>
+                            <div class="ai-avatar soft-avatar">◎</div>
+                        </article>
+
+                        <article class="ai-bubble bubble-left">
+                            <div class="ai-avatar">AI</div>
+                            <div class="ai-content">
+                                <h4>配速波动减少，耐力输出更稳定</h4>
+                                <p>近 7 天平均配速比之前更集中，说明你的跑步节奏控制正在变好。</p>
+                            </div>
+                        </article>
+                    </div>
                 </section>
             </main>
 
@@ -272,7 +274,7 @@
                             <circle cx="15" cy="14" r="1" fill="currentColor"/>
                         </svg>
                     </span>
-                    <span class="nav-text">活动</span>
+                    <span class="nav-text">健康</span>
                 </a>
 
                 <a href="profile.html" class="nav-item">
