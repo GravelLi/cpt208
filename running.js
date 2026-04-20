@@ -28,7 +28,7 @@ let placeSearch = null;
 let walking = null;
 
 let currentPosition = null;
-let currentAddress = "定位中...";
+let currentAddress = "Locating...";
 let currentMarker = null;
 let destinationMarker = null;
 let currentRoute = null;
@@ -121,20 +121,20 @@ function bindEvents() {
     });
 
     sosBtn.addEventListener("click", function () {
-        const locationText = currentAddress || "当前位置";
-        alert("SOS demo：将向紧急联系人发送当前位置\\n" + locationText);
+        const locationText = currentAddress || "Current location";
+        alert("SOS demo: your current location will be sent to your emergency contact.\n" + locationText);
     });
 }
 
 function getCurrentLocation() {
-    routeStatus.textContent = "定位中";
-    routeTitle.textContent = "正在获取当前位置";
-    routeNote.textContent = "定位成功后可直接自由开跑，或输入目的地生成路线。";
+    routeStatus.textContent = "Locating";
+    routeTitle.textContent = "Getting your current location";
+    routeNote.textContent = "Once located, you can start a free run directly or enter a destination to generate a route.";
 
     geolocation.getCurrentPosition(function (status, result) {
         if (status === "complete" && result.position) {
             currentPosition = result.position;
-            currentAddress = result.formattedAddress || "当前位置";
+            currentAddress = result.formattedAddress || "Current location";
 
             if (currentMarker) {
                 currentMarker.setMap(null);
@@ -143,21 +143,21 @@ function getCurrentLocation() {
             currentMarker = new AMap.Marker({
                 position: currentPosition,
                 map: map,
-                title: "当前位置"
+                title: "Current location"
             });
 
             map.setCenter(currentPosition);
-            routeStatus.textContent = "已定位";
-            routeTitle.textContent = "当前位置准备完成";
+            routeStatus.textContent = "Located";
+            routeTitle.textContent = "Current location is ready";
             routeNote.textContent = currentAddress;
-            routeMetaText.textContent = "未规划路线";
-            panelRouteText.textContent = "自由开跑";
-            modePill.textContent = "自由开跑";
+            routeMetaText.textContent = "No route planned";
+            panelRouteText.textContent = "Free Run";
+            modePill.textContent = "Free Run";
         } else {
-            routeStatus.textContent = "定位失败";
-            routeTitle.textContent = "无法获取位置";
-            routeNote.textContent = "请检查浏览器定位权限后重试。";
-            alert("当前位置获取失败，请检查浏览器定位权限。");
+            routeStatus.textContent = "Location Failed";
+            routeTitle.textContent = "Unable to get location";
+            routeNote.textContent = "Please check your browser location permission and try again.";
+            alert("Failed to get current location. Please check your browser location permission.");
         }
     });
 }
@@ -165,7 +165,7 @@ function getCurrentLocation() {
 function searchPlaceByKeyword(keyword) {
     placeSearch.search(keyword, function (status, result) {
         if (status !== "complete" || !result.poiList || !result.poiList.pois.length) {
-            alert("没有找到该目的地，请换个关键词试试。");
+            alert("Destination not found. Please try another keyword.");
             return;
         }
 
@@ -180,14 +180,14 @@ function searchPlaceByKeyword(keyword) {
 
 function useDestination(destination) {
     if (!currentPosition) {
-        alert("请先完成当前位置定位。");
+        alert("Please finish locating your current position first.");
         return;
     }
 
     routeTitle.textContent = destination.name;
-    routeStatus.textContent = "规划中";
-    routeNote.textContent = "正在生成从当前位置出发的最佳路线。";
-    modePill.textContent = "路线跑";
+    routeStatus.textContent = "Planning";
+    routeNote.textContent = "Generating the best route from your current location.";
+    modePill.textContent = "Route Run";
 
     if (destinationMarker) {
         destinationMarker.setMap(null);
@@ -203,9 +203,9 @@ function useDestination(destination) {
 
     walking.search(currentPosition, destination.location, function (status, result) {
         if (status !== "complete" || !result.routes || !result.routes.length) {
-            routeStatus.textContent = "失败";
-            routeNote.textContent = "路线生成失败，请重新选择目的地。";
-            alert("路线生成失败，请重新选择目的地。");
+            routeStatus.textContent = "Failed";
+            routeNote.textContent = "Route generation failed. Please choose another destination.";
+            alert("Route generation failed. Please choose another destination.");
             return;
         }
 
@@ -222,10 +222,10 @@ function useDestination(destination) {
             destination: [destination.location.lng, destination.location.lat]
         };
 
-        routeStatus.textContent = "已生成";
-        routeNote.textContent = "预计 " + distanceKm + " km · " + timeMin + " min";
+        routeStatus.textContent = "Ready";
+        routeNote.textContent = "Estimated " + distanceKm + " km · " + timeMin + " min";
         routeMetaText.textContent = distanceKm + " km · " + timeMin + " min";
-        panelRouteText.textContent = "路线跑";
+        panelRouteText.textContent = "Route Run";
     });
 }
 
@@ -233,14 +233,14 @@ function startRun() {
     isRunning = true;
     runToggleBtn.classList.add("running");
     runToggleLabel.textContent = "Running";
-    runToggleSub.textContent = currentRoute ? "路线导航进行中" : "自由开跑进行中";
+    runToggleSub.textContent = currentRoute ? "Route navigation in progress" : "Free run in progress";
     runToggleIcon.innerHTML = `
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M9 6V18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
             <path d="M15 6V18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
         </svg>
     `;
-    routeStatus.textContent = "进行中";
+    routeStatus.textContent = "Running";
 
     if (runTimer) clearInterval(runTimer);
 
@@ -271,13 +271,13 @@ function pauseRun() {
     isRunning = false;
     runToggleBtn.classList.remove("running");
     runToggleLabel.textContent = "Resume Run";
-    runToggleSub.textContent = currentRoute ? "路线跑已暂停" : "自由开跑已暂停";
+    runToggleSub.textContent = currentRoute ? "Route run paused" : "Free run paused";
     runToggleIcon.innerHTML = `
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M8 6.5V17.5L17 12L8 6.5Z"/>
         </svg>
     `;
-    routeStatus.textContent = "已暂停";
+    routeStatus.textContent = "Paused";
 
     if (runTimer) {
         clearInterval(runTimer);
@@ -295,8 +295,8 @@ function finishRun() {
     heartRateValue.textContent = "98";
     paceValue.textContent = "--";
     runToggleLabel.textContent = "Tap to Run";
-    runToggleSub.textContent = "自由开跑 / 路线跑";
-    routeStatus.textContent = currentRoute ? "路线已生成" : "已定位";
+    runToggleSub.textContent = "Free Run / Route Run";
+    routeStatus.textContent = currentRoute ? "Route Ready" : "Located";
     musicStatusText.textContent = musicAuto ? "Music sync ready" : "Music sync paused";
 }
 
