@@ -23,26 +23,26 @@ let currentTrackIndex = -1;
 
 const musicLibrary = {
     recovery: [
-        { id: "recovery-1", title: "Soft Sunrise", artist: "Recovery Set", file: "audio/recovery-1.mp3" },
-        { id: "recovery-2", title: "Quiet Steps", artist: "Recovery Set", file: "audio/recovery-2.mp3" },
+        { id: "recovery-1", title: "Beneath the Mask", artist: "Atlas Sound Team", file: "audio/Beneath_the_Mask.mp3" },
+        { id: "recovery-2", title: "Kiss Me", artist: "Nai Br.XX/Celeina Ann", file: "audio/Kiss_Me.ogg" },
         { id: "recovery-3", title: "Slow Breeze", artist: "Recovery Set", file: "audio/recovery-3.mp3" },
         { id: "recovery-4", title: "Warm Cooldown", artist: "Recovery Set", file: "audio/recovery-4.mp3" }
     ],
     easy: [
-        { id: "easy-1", title: "City Light Run", artist: "Easy Flow", file: "audio/easy-1.mp3" },
-        { id: "easy-2", title: "Morning Rhythm", artist: "Easy Flow", file: "audio/easy-2.mp3" },
+        { id: "easy-1", title: "IROHA's Dancing All Night", artist: "Conisch", file: "audio/IROHA's_Dancing_All_Night.ogg" },
+        { id: "easy-2", title: "CHEERS", artist: "Mrs. GREEN APPLE", file: "audio/CHEERS.ogg" },
         { id: "easy-3", title: "Blue Track", artist: "Easy Flow", file: "audio/easy-3.mp3" },
         { id: "easy-4", title: "Fresh Pulse", artist: "Easy Flow", file: "audio/easy-4.mp3" }
     ],
     tempo: [
-        { id: "tempo-1", title: "Pace Driver", artist: "Tempo Push", file: "audio/tempo-1.mp3" },
-        { id: "tempo-2", title: "Fast Horizon", artist: "Tempo Push", file: "audio/tempo-2.mp3" },
-        { id: "tempo-3", title: "Neon Motion", artist: "Tempo Push", file: "audio/tempo-3.mp3" },
-        { id: "tempo-4", title: "Stride Mode", artist: "Tempo Push", file: "audio/tempo-4.mp3" }
+        { id: "tempo-1", title: "Distortion‼", artist: "Kessoku Band", file: "audio/Distortion‼.ogg" },
+        { id: "tempo-2", title: "ADAMAS", artist: "LiSA", file: "audio/ADAMAS.ogg" }, 
+        { id: "tempo-3", title: "Inferno", artist: "Hiroyuki Sawano/mpi/Benjamin", file: "audio/Inferno.ogg" },       
+        { id: "tempo-4", title: "Samurai 45", artist: "MIYAVI", file: "audio/Samurai_45.ogg" }
     ],
     sprint: [
-        { id: "sprint-1", title: "Redline Burst", artist: "Sprint Mode", file: "audio/sprint-1.mp3" },
-        { id: "sprint-2", title: "Final Push", artist: "Sprint Mode", file: "audio/sprint-2.mp3" },
+        { id: "sprint-1", title: "MEGALOVANIA", artist: "Toby Fox", file: "audio/MEGALOVANIA.ogg" },
+        { id: "sprint-2", title: "Re:make", artist: "ONE OK ROCK", file: "audio/Re_make.mp3" },      
         { id: "sprint-3", title: "Peak Heat", artist: "Sprint Mode", file: "audio/sprint-3.mp3" },
         { id: "sprint-4", title: "Last Meter", artist: "Sprint Mode", file: "audio/sprint-4.mp3" }
     ]
