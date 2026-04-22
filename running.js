@@ -24,6 +24,11 @@ const runToggleLabel = document.getElementById("runToggleLabel");
 const runToggleSub = document.getElementById("runToggleSub");
 const runToggleIcon = document.getElementById("runToggleIcon");
 
+const sosOverlay = document.getElementById("sosOverlay");
+const sosConfirmBtn = document.getElementById("sosConfirmBtn");
+const sosCancelBtn = document.getElementById("sosCancelBtn");
+const sosDialogText = document.getElementById("sosDialogText");
+
 let map = null;
 let autoComplete = null;
 let placeSearch = null;
@@ -84,8 +89,8 @@ const buddyColorPool = [
     "#7986cb",
     "#ba68c8",
     "#f06292",
-    "#a1887f",
-    "#90a4ae"
+    "#d36a44",
+    "#7eb2cc"
 ];
 
 const autoMusicLibrary = {
@@ -188,8 +193,19 @@ function bindEvents() {
 
     if (sosBtn) {
         sosBtn.addEventListener("click", function () {
-            const locationText = currentAddress || "Current location";
-            alert("SOS demo: your current location will be sent to your emergency contact.\n" + locationText);
+            openSosDialog();
+        });
+    }
+
+    if (sosCancelBtn) {
+        sosCancelBtn.addEventListener("click", function () {
+            closeSosDialog();
+        });
+    }
+
+    if (sosConfirmBtn) {
+        sosConfirmBtn.addEventListener("click", function () {
+            confirmSosAlert();
         });
     }
 
@@ -431,6 +447,24 @@ function pauseRun() {
 function finishRun() {
     pauseRun();
 
+    if (walking) {
+        walking.clear();
+    }
+
+    if (destinationMarker) {
+        destinationMarker.setMap(null);
+        destinationMarker = null;
+    }
+
+    buddyMarkers.forEach(function (marker) {
+        marker.setMap(null);
+    });
+    buddyMarkers = [];
+
+    if (touchBtn) {
+        touchBtn.classList.remove("paired");
+    }
+
     simulatedDistance = 0;
     simulatedHeartRate = 98;
     simulatedPaceSeconds = 378;
@@ -441,22 +475,22 @@ function finishRun() {
     paceValue.textContent = "--";
     runToggleLabel.textContent = "Start Run";
     runToggleSub.textContent = "Free Run / Route Run";
-    routeStatus.textContent = currentRoute ? "Route Ready" : "Ready";
-    routeMetaText.textContent = currentRoute
-        ? currentRoute.distanceKm + " km · " + currentRoute.timeMin + " min"
-        : "Campus fake run is ready";
+    routeStatus.textContent = "Ready";
+    routeTitle.textContent = "Simulated start is ready";
+    routeNote.textContent = currentAddress || "Xi'an Jiaotong-Liverpool University · Ren'ai Road";
+    routeMetaText.textContent = "Campus fake run is ready";
+    panelRouteText.textContent = "Free Run";
+    modePill.textContent = "Free Run";
     musicStatusText.textContent = musicAuto ? "Music sync ready" : "Music sync paused";
+
+    currentRoute = null;
+    currentPathPoints = [];
+    currentPathIndex = 0;
+    freeRunTargetIndex = 0;
 
     if (fakeStartPosition) {
         updateCurrentPosition(fakeStartPosition, true);
     }
-
-    if (currentRoute && currentRoute.isFreeRun) {
-        currentRoute = null;
-    }
-
-    currentPathPoints = [];
-    currentPathIndex = 0;
 }
 
 function startBuddyMatch() {
@@ -1004,4 +1038,24 @@ function formatPace(totalSeconds) {
     const min = Math.floor(totalSeconds / 60);
     const sec = Math.round(totalSeconds % 60);
     return min + "'" + String(sec).padStart(2, "0") + '"';
+}
+
+function openSosDialog() {
+    if (sosDialogText) {
+        sosDialogText.textContent = "Are you sure you want to send an emergency alert with your current location to your emergency contact?";
+    }
+
+    if (sosOverlay) {
+        sosOverlay.classList.add("active");
+    }
+}
+
+function closeSosDialog() {
+    if (sosOverlay) {
+        sosOverlay.classList.remove("active");
+    }
+}
+
+function confirmSosAlert() {
+    closeSosDialog();
 }
