@@ -226,14 +226,18 @@ body {
 
 .left-floats {
     left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 12px;
+    transform: none;
 }
 
 .right-floats {
     right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 12px;
+    transform: none;
+}
+
+#musicBtn {
+    background: linear-gradient(135deg, #f6fa05 0%, #9affc9 100%);
 }
 
 .map-float-btn {
@@ -258,19 +262,30 @@ body {
 }
 
 .sos-btn {
-    background: rgba(255, 240, 236, 0.96);
-    color: #c9463e;
+    background: linear-gradient(135deg, #ff8a7a 0%, #ff5a5f 100%);
+    color: #fffaf6;
+    box-shadow: 0 12px 24px rgba(255, 90, 95, 0.24);
 }
 
 .touch-btn {
-    background: linear-gradient(135deg, rgba(255, 173, 133, 0.96) 0%, rgba(255, 107, 99, 0.96) 100%);
-    color: #fffaf6;
-    box-shadow: 0 12px 24px rgba(217, 97, 79, 0.22);
+    background: linear-gradient(135deg, #fff36a 0%, #ff9f43 100%);
+    color: #b15a1c;
+    box-shadow: 0 12px 24px rgba(255, 159, 67, 0.28);
 }
 
 .touch-btn.paired {
-    background: linear-gradient(135deg, #ff8f70 0%, #d9473a 100%);
+    background: linear-gradient(135deg, #ffb347 0%, #ff5f6d 100%);
     color: #ffffff;
+}
+
+#touchBtn svg {
+    width: 26px;
+    height: 26px;
+}
+
+#musicBtn svg {
+    width: 24px;
+    height: 24px;
 }
 
 .touch-overlay {
@@ -544,29 +559,40 @@ body {
 .controls-row {
     margin-top: 12px;
     display: grid;
-    grid-template-columns: 52px 1fr 52px;
     gap: 10px;
     align-items: center;
 }
 
+.controls-row-two {
+    grid-template-columns: 64px 1fr;
+}
+
 .side-control {
-    width: 52px;
-    height: 52px;
+    width: 64px;
+    height: 64px;
     border: none;
-    border-radius: 18px;
+    border-radius: 20px;
     background: #fff5ef;
     color: #ba5445;
     box-shadow: inset 0 0 0 1px #f3ddd3;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 4px;
     cursor: pointer;
 }
 
-.side-control svg {
-    width: 22px;
-    height: 22px;
+.side-control-icon svg {
+    width: 20px;
+    height: 20px;
     display: block;
+}
+
+.side-control-text {
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
 }
 
 .main-run-btn {
@@ -648,6 +674,34 @@ body {
     cursor: pointer;
 }
 
+.sos-btn-vertical {
+    width: 56px;
+    height: 56px;
+    padding: 7px 5px 6px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.sos-btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sos-btn-icon svg {
+    width: 21px;
+    height: 21px;
+    display: block;
+}
+
+.sos-btn-text {
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
 @media (max-width: 430px) {
     .phone-frame {
         width: 100%;

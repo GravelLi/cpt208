@@ -61,22 +61,15 @@
                     </div>
 
                     <div class="map-float-btns right-floats">
-                        <button class="map-float-btn sos-btn" id="sosBtn" aria-label="Emergency SOS">
-                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path d="M12 3L19.5 6V11.5C19.5 16.3 16.4 20.7 12 22C7.6 20.7 4.5 16.3 4.5 11.5V6L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                                <path d="M9.5 12H14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M12 9.5V14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-
-                        <button class="map-float-btn" id="relocateBtn" aria-label="Relocate">
-                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <circle cx="12" cy="12" r="6.5" stroke="currentColor" stroke-width="2"/>
-                                <path d="M12 2V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M12 19V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M2 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M19 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
+                        <button class="map-float-btn sos-btn sos-btn-vertical" id="sosBtn" aria-label="Emergency SOS">
+                            <span class="sos-btn-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 3L19.5 6V11.5C19.5 16.3 16.4 20.7 12 22C7.6 20.7 4.5 16.3 4.5 11.5V6L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                    <path d="M9.5 12H14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M12 9.5V14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                            <span class="sos-btn-text">SOS</span>
                         </button>
                     </div>
 
@@ -141,31 +134,27 @@
                         </div>
                     </div>
 
-                    <div class="controls-row">
-                        <button class="side-control" id="finishBtn" aria-label="Finish run">
-                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path d="M7 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M8 5H17L15 9L17 13H8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                            </svg>
+                    <div class="controls-row controls-row-two">
+                        <button class="side-control finish-control" id="finishBtn" aria-label="Finish run">
+                            <span class="side-control-icon">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M7 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M8 5H17L15 9L17 13H8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <span class="side-control-text">Finish</span>
                         </button>
 
-                        <button class="main-run-btn" id="runToggleBtn" aria-label="Start or pause run">
+                        <button class="main-run-btn" id="runToggleBtn" aria-label="Start, pause, or resume run">
                             <span class="main-run-icon" id="runToggleIcon">
                                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                     <path d="M8 6.5V17.5L17 12L8 6.5Z"/>
                                 </svg>
                             </span>
                             <span class="main-run-copy">
-                                <strong id="runToggleLabel">Tap to Run</strong>
+                                <strong id="runToggleLabel">Start Run</strong>
                                 <small id="runToggleSub">Free Run / Route Run</small>
                             </span>
-                        </button>
-
-                        <button class="side-control" id="pauseBtn" aria-label="Pause run">
-                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path d="M9 6V18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-                                <path d="M15 6V18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-                            </svg>
                         </button>
                     </div>
                 </section>
