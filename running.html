@@ -48,6 +48,16 @@
                                 <circle cx="17" cy="15.5" r="3" stroke="currentColor" stroke-width="2"/>
                             </svg>
                         </button>
+
+                        <button class="map-float-btn touch-btn" id="touchBtn" aria-label="Tap to match a running partner">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="2.2" fill="currentColor"/>
+                                <path d="M12 4.5C15.5 4.5 18.5 7.3 19.2 10.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M4.8 10.8C5.5 7.3 8.5 4.5 12 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M4.8 13.2C5.5 16.7 8.5 19.5 12 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M19.2 13.2C18.5 16.7 15.5 19.5 12 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
                     </div>
 
                     <div class="map-float-btns right-floats">
@@ -68,6 +78,31 @@
                                 <path d="M19 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </button>
+                    </div>
+
+                    <div class="touch-overlay" id="touchOverlay" aria-hidden="true">
+                        <div class="touch-panel">
+                            <div class="touch-ripple-wrap">
+                                <span class="touch-ripple ripple-1"></span>
+                                <span class="touch-ripple ripple-2"></span>
+                                <span class="touch-ripple ripple-3"></span>
+
+                                <div class="touch-core">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="2.2" fill="currentColor"/>
+                                        <path d="M12 4.5C15.5 4.5 18.5 7.3 19.2 10.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M4.8 10.8C5.5 7.3 8.5 4.5 12 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M4.8 13.2C5.5 16.7 8.5 19.5 12 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M19.2 13.2C18.5 16.7 15.5 19.5 12 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="touch-copy">
+                                <strong id="touchStatusTitle">Finding nearby runners...</strong>
+                                <p id="touchStatusText">Tap-to-match prototype is searching for a companion.</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="map-overlay-info">

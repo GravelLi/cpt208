@@ -95,6 +95,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .icon-btn svg {
     width: 20px;
     height: 20px;
@@ -247,6 +248,7 @@ body {
     align-items: center;
     justify-content: center;
     color: #aa4c3e;
+    cursor: pointer;
 }
 
 .map-float-btn svg {
@@ -258,6 +260,170 @@ body {
 .sos-btn {
     background: rgba(255, 240, 236, 0.96);
     color: #c9463e;
+}
+
+.touch-btn {
+    background: linear-gradient(135deg, rgba(255, 173, 133, 0.96) 0%, rgba(255, 107, 99, 0.96) 100%);
+    color: #fffaf6;
+    box-shadow: 0 12px 24px rgba(217, 97, 79, 0.22);
+}
+
+.touch-btn.paired {
+    background: linear-gradient(135deg, #ff8f70 0%, #d9473a 100%);
+    color: #ffffff;
+}
+
+.touch-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(80, 36, 31, 0.18);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.touch-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.touch-panel {
+    width: min(100%, 260px);
+    padding: 22px 18px 18px;
+    border-radius: 28px;
+    background: rgba(255, 250, 246, 0.95);
+    box-shadow: 0 24px 40px rgba(122, 65, 57, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.touch-ripple-wrap {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.touch-core {
+    position: relative;
+    z-index: 3;
+    width: 74px;
+    height: 74px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-deep) 100%);
+    color: #fffdf9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 16px 28px rgba(217, 71, 58, 0.28);
+}
+
+.touch-core svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+.touch-ripple {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 74px;
+    height: 74px;
+    border-radius: 999px;
+    border: 2px solid rgba(217, 71, 58, 0.28);
+    animation: buddyRipple 2.4s ease-out infinite;
+    z-index: 1;
+}
+
+.ripple-2 {
+    animation-delay: 0.8s;
+}
+
+.ripple-3 {
+    animation-delay: 1.6s;
+}
+
+@keyframes buddyRipple {
+    0% {
+        transform: scale(0.92);
+        opacity: 0.72;
+    }
+    70% {
+        opacity: 0.18;
+    }
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
+}
+
+.touch-copy {
+    text-align: center;
+}
+
+.touch-copy strong {
+    display: block;
+    font-size: 16px;
+    color: #4a1f1d;
+    margin-bottom: 6px;
+}
+
+.touch-copy p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #9b7569;
+}
+
+.buddy-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -100%);
+}
+
+.buddy-pin {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: var(--buddy-color, linear-gradient(135deg, #ff8d73 0%, #d9473a 100%));
+    box-shadow: 0 8px 14px rgba(122, 65, 57, 0.18);
+    color: #fffdf9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 250, 246, 0.96);
+}
+
+.buddy-pin svg {
+    width: 15px;
+    height: 15px;
+    display: block;
+}
+
+.buddy-label {
+    margin-top: 4px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(255, 250, 246, 0.94);
+    color: #9f5a4d;
+    font-size: 10px;
+    font-weight: 700;
+    box-shadow: 0 6px 12px rgba(122, 65, 57, 0.10);
+    white-space: nowrap;
+    line-height: 1.1;
 }
 
 .map-overlay-info {
@@ -394,6 +560,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .side-control svg {
@@ -413,6 +580,7 @@ body {
     justify-content: center;
     gap: 12px;
     box-shadow: 0 14px 28px rgba(217, 71, 58, 0.22);
+    cursor: pointer;
 }
 
 .main-run-btn.running {

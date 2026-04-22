@@ -5,6 +5,10 @@ const pauseBtn = document.getElementById("pauseBtn");
 const finishBtn = document.getElementById("finishBtn");
 const musicBtn = document.getElementById("musicBtn");
 const sosBtn = document.getElementById("sosBtn");
+const touchBtn = document.getElementById("touchBtn");
+const touchOverlay = document.getElementById("touchOverlay");
+const touchStatusTitle = document.getElementById("touchStatusTitle");
+const touchStatusText = document.getElementById("touchStatusText");
 
 const routeTitle = document.getElementById("routeTitle");
 const routeStatus = document.getElementById("routeStatus");
@@ -31,6 +35,7 @@ let currentPosition = null;
 let currentAddress = "Locating...";
 let currentMarker = null;
 let destinationMarker = null;
+let buddyMarkers = [];
 let currentRoute = null;
 let isRunning = false;
 let runTimer = null;
@@ -38,12 +43,35 @@ let simulatedDistance = 0;
 let simulatedHeartRate = 98;
 let simulatedPaceSeconds = 378;
 let musicAuto = true;
+let isMatchingBuddy = false;
+
+const DEFAULT_OVERVIEW_ZOOM = 17;
+const BUDDY_CLOSEUP_ZOOM = 20;
+
+const buddyNamePool = [
+    "Ava", "Mia", "Luna", "Zoe", "Ella", "Nora",
+    "Ivy", "Ruby", "Coco", "Emma", "Lily", "Lucy",
+    "Milo", "Leo", "Noah", "Owen", "Evan", "Alex"
+];
+
+const buddyColorPool = [
+    "#ff8a80",
+    "#ffb74d",
+    "#81c784",
+    "#4db6ac",
+    "#64b5f6",
+    "#7986cb",
+    "#ba68c8",
+    "#f06292",
+    "#a1887f",
+    "#90a4ae"
+];
 
 initMap();
 
 function initMap() {
     map = new AMap.Map("mapContainer", {
-        zoom: 15,
+        zoom: DEFAULT_OVERVIEW_ZOOM,
         viewMode: "2D",
         resizeEnable: true,
     });
@@ -56,7 +84,7 @@ function initMap() {
                 timeout: 10000,
                 position: "RB",
                 offset: [10, 20],
-                zoomToAccuracy: true
+                zoomToAccuracy: false
             });
 
             autoComplete = new AMap.AutoComplete({
@@ -84,46 +112,64 @@ function initMap() {
 }
 
 function bindEvents() {
-    relocateBtn.addEventListener("click", getCurrentLocation);
+    if (relocateBtn) {
+        relocateBtn.addEventListener("click", getCurrentLocation);
+    }
 
-    AMap.event.addListener(autoComplete, "select", function (event) {
-        const tip = event.tip;
+    if (autoComplete) {
+        autoComplete.on("select", function (event) {
+            const tip = event.tip;
 
-        if (tip && tip.location) {
-            useDestination({
-                name: tip.name,
-                location: tip.location
-            });
-            return;
-        }
+            if (tip && tip.location) {
+                useDestination({
+                    name: tip.name,
+                    location: tip.location
+                });
+                return;
+            }
 
-        if (tip && tip.name) {
-            searchPlaceByKeyword(tip.name);
-        }
-    });
+            if (tip && tip.name) {
+                searchPlaceByKeyword(tip.name);
+            }
+        });
+    }
 
-    runToggleBtn.addEventListener("click", function () {
-        if (isRunning) {
-            pauseRun();
-        } else {
-            startRun();
-        }
-    });
+    if (runToggleBtn) {
+        runToggleBtn.addEventListener("click", function () {
+            if (isRunning) {
+                pauseRun();
+            } else {
+                startRun();
+            }
+        });
+    }
 
-    pauseBtn.addEventListener("click", pauseRun);
-    finishBtn.addEventListener("click", finishRun);
+    if (pauseBtn) {
+        pauseBtn.addEventListener("click", pauseRun);
+    }
 
-    musicBtn.addEventListener("click", function () {
-        musicAuto = !musicAuto;
-        musicStatusText.textContent = musicAuto
-            ? "Music adapts to heart rate and pace"
-            : "Music sync paused";
-    });
+    if (finishBtn) {
+        finishBtn.addEventListener("click", finishRun);
+    }
 
-    sosBtn.addEventListener("click", function () {
-        const locationText = currentAddress || "Current location";
-        alert("SOS demo: your current location will be sent to your emergency contact.\n" + locationText);
-    });
+    if (musicBtn) {
+        musicBtn.addEventListener("click", function () {
+            window.location.href = "music.html?hr=" + simulatedHeartRate;
+        });
+    }
+
+    if (sosBtn) {
+        sosBtn.addEventListener("click", function () {
+            const locationText = currentAddress || "Current location";
+            alert("SOS demo: your current location will be sent to your emergency contact.\n" + locationText);
+        });
+    }
+
+    if (touchBtn) {
+        touchBtn.addEventListener("click", function () {
+            startBuddyMatch();
+        });
+    }
 }
 
 function getCurrentLocation() {
@@ -143,16 +189,22 @@ function getCurrentLocation() {
             currentMarker = new AMap.Marker({
                 position: currentPosition,
                 map: map,
-                title: "Current location"
+                title: "Current location",
+                zIndex: 200
             });
 
-            map.setCenter(currentPosition);
+            map.setZoomAndCenter(DEFAULT_OVERVIEW_ZOOM, currentPosition, true);
+
             routeStatus.textContent = "Located";
             routeTitle.textContent = "Current location is ready";
             routeNote.textContent = currentAddress;
-            routeMetaText.textContent = "No route planned";
-            panelRouteText.textContent = "Free Run";
+            routeMetaText.textContent = buddyMarkers.length > 0 ? getBuddyCountText() : "No route planned";
+            panelRouteText.textContent = buddyMarkers.length > 0 ? "Free Run · Buddy" : "Free Run";
             modePill.textContent = "Free Run";
+
+            if (buddyMarkers.length > 0) {
+                layoutBuddyMarkers(true);
+            }
         } else {
             routeStatus.textContent = "Location Failed";
             routeTitle.textContent = "Unable to get location";
@@ -196,7 +248,8 @@ function useDestination(destination) {
     destinationMarker = new AMap.Marker({
         position: destination.location,
         map: map,
-        title: destination.name
+        title: destination.name,
+        zIndex: 100
     });
 
     walking.clear();
@@ -224,8 +277,14 @@ function useDestination(destination) {
 
         routeStatus.textContent = "Ready";
         routeNote.textContent = "Estimated " + distanceKm + " km · " + timeMin + " min";
-        routeMetaText.textContent = distanceKm + " km · " + timeMin + " min";
-        panelRouteText.textContent = "Route Run";
+        routeMetaText.textContent = buddyMarkers.length > 0
+            ? distanceKm + " km · " + timeMin + " min · " + getBuddyCountText()
+            : distanceKm + " km · " + timeMin + " min";
+        panelRouteText.textContent = buddyMarkers.length > 0 ? "Route Run · Buddy" : "Route Run";
+
+        if (buddyMarkers.length > 0) {
+            layoutBuddyMarkers(true);
+        }
     });
 }
 
@@ -242,7 +301,9 @@ function startRun() {
     `;
     routeStatus.textContent = "Running";
 
-    if (runTimer) clearInterval(runTimer);
+    if (runTimer) {
+        clearInterval(runTimer);
+    }
 
     runTimer = setInterval(function () {
         simulatedDistance += currentRoute ? 0.04 : 0.03;
@@ -259,14 +320,18 @@ function startRun() {
             } else if (simulatedPaceSeconds < 350) {
                 musicStatusText.textContent = "Music boosted with your pace";
             } else {
-                musicStatusText.textContent = "Music adapts to heart rate and pace";
+                musicStatusText.textContent = buddyMarkers.length > 0
+                    ? "Shared rhythm mode is on"
+                    : "Music adapts to heart rate and pace";
             }
         }
     }, 3000);
 }
 
 function pauseRun() {
-    if (!isRunning) return;
+    if (!isRunning) {
+        return;
+    }
 
     isRunning = false;
     runToggleBtn.classList.remove("running");
@@ -297,7 +362,169 @@ function finishRun() {
     runToggleLabel.textContent = "Tap to Run";
     runToggleSub.textContent = "Free Run / Route Run";
     routeStatus.textContent = currentRoute ? "Route Ready" : "Located";
-    musicStatusText.textContent = musicAuto ? "Music sync ready" : "Music sync paused";
+
+    routeMetaText.textContent = buddyMarkers.length > 0
+        ? (
+            currentRoute
+                ? currentRoute.distanceKm + " km · " + currentRoute.timeMin + " min · " + getBuddyCountText()
+                : getBuddyCountText()
+        )
+        : (
+            currentRoute
+                ? currentRoute.distanceKm + " km · " + currentRoute.timeMin + " min"
+                : "No route planned"
+        );
+
+    musicStatusText.textContent = musicAuto
+        ? (buddyMarkers.length > 0 ? "Shared run mode ready" : "Music sync ready")
+        : "Music sync paused";
+}
+
+function startBuddyMatch() {
+    if (!currentPosition) {
+        alert("Please locate your current position first.");
+        return;
+    }
+
+    if (isMatchingBuddy) {
+        return;
+    }
+
+    isMatchingBuddy = true;
+
+    touchStatusTitle.textContent = "Finding nearby runners...";
+    touchStatusText.textContent = "Tap-to-match prototype is searching for a companion.";
+    touchOverlay.classList.add("active");
+
+    setTimeout(function () {
+        touchStatusTitle.textContent = "Matched successfully";
+        touchStatusText.textContent = "A nearby runner has joined your session.";
+    }, 1500);
+
+    setTimeout(function () {
+        touchOverlay.classList.remove("active");
+
+        createBuddyMarker();
+
+        isMatchingBuddy = false;
+
+        touchBtn.classList.add("paired");
+        routeMetaText.textContent = currentRoute
+            ? currentRoute.distanceKm + " km · " + currentRoute.timeMin + " min · " + getBuddyCountText()
+            : getBuddyCountText();
+        panelRouteText.textContent = currentRoute ? "Route Run · Buddy" : "Free Run · Buddy";
+        routeNote.textContent = "Nearby runners joined after tap-to-match. They are gathered around your position.";
+        musicStatusText.textContent = "Shared run mode ready";
+    }, 2800);
+}
+
+function getBuddyCountText() {
+    if (buddyMarkers.length === 0) {
+        return "No buddy nearby";
+    }
+
+    if (buddyMarkers.length === 1) {
+        return "1 buddy joined";
+    }
+
+    return buddyMarkers.length + " buddies joined";
+}
+
+function getRandomBuddyName() {
+    const usedNames = buddyMarkers.map(function (marker) {
+        return marker.__buddyName;
+    }).filter(Boolean);
+
+    const availableNames = buddyNamePool.filter(function (name) {
+        return !usedNames.includes(name);
+    });
+
+    if (availableNames.length === 0) {
+        return "Buddy-" + String(buddyMarkers.length + 1);
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableNames.length);
+    return availableNames[randomIndex];
+}
+
+function getRandomBuddyColor() {
+    const randomIndex = Math.floor(Math.random() * buddyColorPool.length);
+    return buddyColorPool[randomIndex];
+}
+
+function layoutBuddyMarkers(keepCloseView) {
+    if (!currentPosition || buddyMarkers.length === 0) {
+        return;
+    }
+
+    const lat = currentPosition.lat;
+    const lng = currentPosition.lng;
+    const total = buddyMarkers.length;
+
+    const centerOffsetLat = -0.000050;
+    const circleCenterLat = lat + centerOffsetLat;
+    const circleCenterLng = lng;
+
+    let radiusLat;
+    if (total <= 2) {
+        radiusLat = 0.00004;
+    } else if (total <= 4) {
+        radiusLat = 0.00005;
+    } else if (total <= 6) {
+        radiusLat = 0.00006;
+    } else {
+        radiusLat = 0.00007;
+    }
+
+    const radiusLng = radiusLat / Math.max(Math.cos(lat * Math.PI / 180), 0.2);
+
+    buddyMarkers.forEach(function (marker, index) {
+        const angle = (-Math.PI / 2) + (Math.PI * 2 * index / total);
+
+        const offsetLng = Math.cos(angle) * radiusLng;
+        const offsetLat = Math.sin(angle) * radiusLat;
+
+        marker.setPosition([circleCenterLng + offsetLng, circleCenterLat + offsetLat]);
+    });
+
+    if (keepCloseView) {
+        map.setZoomAndCenter(BUDDY_CLOSEUP_ZOOM, currentPosition, true);
+    }
+}
+
+function createBuddyMarker() {
+    if (!currentPosition) {
+        return;
+    }
+
+    const buddyNumber = buddyMarkers.length + 1;
+    const buddyName = getRandomBuddyName();
+    const buddyColor = getRandomBuddyColor();
+
+    const buddyContent = `
+        <div class="buddy-marker">
+            <div class="buddy-pin" style="--buddy-color: ${buddyColor};">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="7" r="3" fill="currentColor"></circle>
+                    <path d="M12 11.5C9.5 11.5 7.5 13.4 7.2 16L6.9 18H17.1L16.8 16C16.5 13.4 14.5 11.5 12 11.5Z" fill="currentColor"></path>
+                </svg>
+            </div>
+            <div class="buddy-label">${buddyName}</div>
+        </div>
+    `;
+
+    const marker = new AMap.Marker({
+        position: [currentPosition.lng, currentPosition.lat],
+        map: map,
+        offset: new AMap.Pixel(0, 0),
+        content: buddyContent,
+        title: buddyName + " · Buddy " + buddyNumber,
+        zIndex: 120
+    });
+
+    marker.__buddyName = buddyName;
+    buddyMarkers.push(marker);
+    layoutBuddyMarkers(true);
 }
 
 function formatPace(totalSeconds) {
