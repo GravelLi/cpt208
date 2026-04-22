@@ -24,27 +24,27 @@ let currentTrackIndex = -1;
 const musicLibrary = {
     recovery: [
         { id: "recovery-1", title: "Beneath the Mask", artist: "Atlas Sound Team", file: "audio/Beneath_the_Mask.mp3" },
-        { id: "recovery-2", title: "Kiss Me", artist: "Nai Br.XX/Celeina Ann", file: "audio/Kiss_Me.ogg" },
-        { id: "recovery-3", title: "Slow Breeze", artist: "Recovery Set", file: "audio/recovery-3.mp3" },
-        { id: "recovery-4", title: "Warm Cooldown", artist: "Recovery Set", file: "audio/recovery-4.mp3" }
+        { id: "recovery-2", title: "Don't Forget Me", artist: "Little End", file: "audio/Don't_Forget_Me.ogg" },
+        { id: "recovery-3", title: "Kiss Me", artist: "Nai Br.XX/Celeina Ann", file: "audio/Kiss_Me.ogg" },
+        { id: "recovery-4", title: "Am I Dreaming", artist: "Metro Boomin/A$AP Rocky/Roisee", file: "audio/Am_I_Dreaming.ogg" },
     ],
     easy: [
         { id: "easy-1", title: "IROHA's Dancing All Night", artist: "Conisch", file: "audio/IROHA's_Dancing_All_Night.ogg" },
         { id: "easy-2", title: "CHEERS", artist: "Mrs. GREEN APPLE", file: "audio/CHEERS.ogg" },
-        { id: "easy-3", title: "Blue Track", artist: "Easy Flow", file: "audio/easy-3.mp3" },
-        { id: "easy-4", title: "Fresh Pulse", artist: "Easy Flow", file: "audio/easy-4.mp3" }
+        { id: "easy-3", title: "Ignite", artist: "K-391/Alan Walker/Julie Bergan/승리", file: "audio/Ignite.ogg" },       
+        { id: "easy-4", title: "Endless War", artist: "Within Temptation", file: "audio/Endless_War.ogg" }
     ],
     tempo: [
         { id: "tempo-1", title: "Distortion‼", artist: "Kessoku Band", file: "audio/Distortion‼.ogg" },
         { id: "tempo-2", title: "ADAMAS", artist: "LiSA", file: "audio/ADAMAS.ogg" }, 
-        { id: "tempo-3", title: "Inferno", artist: "Hiroyuki Sawano/mpi/Benjamin", file: "audio/Inferno.ogg" },       
-        { id: "tempo-4", title: "Samurai 45", artist: "MIYAVI", file: "audio/Samurai_45.ogg" }
+        { id: "tempo-3", title: "Never Going Back", artist: "The Score", file: "audio/Never_Going_Back.ogg" },       
+        { id: "tempo-4", title: "Inferno", artist: "Hiroyuki Sawano/mpi/Benjamin", file: "audio/Inferno.ogg" },
     ],
     sprint: [
         { id: "sprint-1", title: "MEGALOVANIA", artist: "Toby Fox", file: "audio/MEGALOVANIA.ogg" },
-        { id: "sprint-2", title: "Re:make", artist: "ONE OK ROCK", file: "audio/Re_make.mp3" },      
-        { id: "sprint-3", title: "Peak Heat", artist: "Sprint Mode", file: "audio/sprint-3.mp3" },
-        { id: "sprint-4", title: "Last Meter", artist: "Sprint Mode", file: "audio/sprint-4.mp3" }
+        { id: "sprint-2", title: "Power (In Your Soul)", artist: "Interupt/Luna LePage", file: "audio/Power (In Your Soul).ogg" },
+        { id: "sprint-3", title: "Re:make", artist: "ONE OK ROCK", file: "audio/Re_make.mp3" },      
+        { id: "sprint-4", title: "Zoo", artist: "Disney/Shakira", file: "audio/Zoo.ogg" }
     ]
 };
 
