@@ -30,10 +30,12 @@
 
                 <section class="status-strip">
                     <span class="mode-pill" id="modePill">Free Run</span>
+
                     <div class="status-copy">
                         <strong id="routeTitle">Current location is ready</strong>
                         <p id="routeNote">If no destination is entered, tracking will start directly from your current location.</p>
                     </div>
+
                     <span class="route-badge" id="routeStatus">Locating</span>
                 </section>
 
@@ -41,12 +43,15 @@
                     <div id="mapContainer" class="map-container"></div>
 
                     <div class="map-float-btns left-floats">
-                        <button class="map-float-btn" id="musicBtn" aria-label="Music controls">
-                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path d="M9 18V7.5L19 5V15.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="7" cy="18" r="3" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="17" cy="15.5" r="3" stroke="currentColor" stroke-width="2"/>
-                            </svg>
+                        <button class="map-float-btn music-btn-vertical" id="musicBtn" aria-label="Music controls">
+                            <span class="music-btn-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M9 18V7.5L19 5V15.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="7" cy="18" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="17" cy="15.5" r="3" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </span>
+                            <span class="music-btn-text">Music</span>
                         </button>
 
                         <button class="map-float-btn touch-btn touch-btn-vertical" id="touchBtn" aria-label="Tap to match a running partner">
@@ -54,10 +59,8 @@
                                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                     <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                                         <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"></circle>
-
                                         <path d="M9.2 9.8C10 9 11 8.6 12 8.6C13 8.6 14 9 14.8 9.8" stroke-width="1.7"></path>
                                         <path d="M9.2 14.2C10 15 11 15.4 12 15.4C13 15.4 14 15 14.8 14.2" stroke-width="1.7"></path>
-
                                         <path d="M6.8 7.8C8.2 6.4 10 5.7 12 5.7C14 5.7 15.8 6.4 17.2 7.8" stroke-width="1.6"></path>
                                         <path d="M6.8 16.2C8.2 17.6 10 18.3 12 18.3C14 18.3 15.8 17.6 17.2 16.2" stroke-width="1.6"></path>
                                     </g>
@@ -136,6 +139,7 @@
                             <span class="meta-dot"></span>
                             <p id="musicStatusText">Music sync ready</p>
                         </div>
+
                         <div class="meta-right">
                             <p id="panelRouteText">Free Run</p>
                         </div>
@@ -158,6 +162,7 @@
                                     <path d="M8 6.5V17.5L17 12L8 6.5Z"/>
                                 </svg>
                             </span>
+
                             <span class="main-run-copy">
                                 <strong id="runToggleLabel">Start Run</strong>
                                 <small id="runToggleSub">Free Run / Route Run</small>
@@ -187,6 +192,93 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="music-panel" id="musicPanel" aria-hidden="true">
+                    <div class="music-panel-backdrop" id="musicPanelBackdrop"></div>
+
+                    <section class="music-panel-sheet">
+                        <header class="music-panel-header">
+                            <button class="icon-btn music-close-btn" id="closeMusicPanel" aria-label="Close music panel">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+
+                            <div class="music-title-wrap">
+                                <h2>Run Music</h2>
+                            </div>
+                        </header>                 
+                        
+                        <div class="music-control-strip">
+                            <div class="music-control-card sync-card">
+                                <div class="music-control-copy">
+                                    <span class="music-control-label">Heart Rate Sync</span>
+                                    <p>Auto-switch playlists by current effort.</p>
+                                </div>
+
+                                <label class="sync-switch" for="adaptiveToggle">
+                                    <input type="checkbox" id="adaptiveToggle" checked>
+                                    <span class="sync-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="music-control-card playback-card">
+                                <div class="music-control-copy">
+                                    <span class="music-control-label">Playback Mode</span>
+                                </div>
+
+                                <div class="playback-segmented" id="playbackSegmented">
+                                    <button type="button" class="playback-chip" data-mode="single-loop">Single</button>
+                                    <button type="button" class="playback-chip" data-mode="list-loop">List Loop</button>
+                                    <button type="button" class="playback-chip" data-mode="cross-list">Cross-list</button>
+                                </div>
+                            </div>
+                        </div>  
+                        
+                        <section class="category-tabs" id="categoryTabs">
+                            <button class="category-tab active" data-category="recovery">Recovery</button>
+                            <button class="category-tab" data-category="easy">Easy Flow</button>
+                            <button class="category-tab" data-category="tempo">Tempo Push</button>
+                            <button class="category-tab" data-category="sprint">Sprint Mode</button>
+                            
+                        </section>
+
+                        <section class="track-section">
+                            <div class="section-head">
+                                <strong id="trackSectionTitle">Recovery Playlist</strong>
+                                <span id="trackCountText">4 tracks</span>
+                            </div>
+
+                            <div class="track-list" id="trackList"></div>
+                        </section>
+
+                        <section class="bottom-player">
+                            <button class="player-control secondary" id="prevBtn" aria-label="Previous">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M7 6V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M17 7L10 12L17 17V7Z" fill="currentColor"/>
+                                </svg>
+                            </button>
+
+                            <button class="player-control primary" id="playPauseBtn" aria-label="Play or pause">
+                                <span id="playPauseIcon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <path d="M8 6.5V17.5L17 12L8 6.5Z"/>
+                                    </svg>
+                                </span>
+                            </button>
+
+                            <button class="player-control secondary" id="nextBtn" aria-label="Next">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M17 6V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M7 7L14 12L7 17V7Z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </section>
+                    </section>
+                </div>
+
+                <audio id="runMusicPlayer" preload="metadata"></audio>
             </div>
         </div>
     </div>
