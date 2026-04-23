@@ -62,6 +62,7 @@ body {
 
 .run-page {
     height: min(96dvh, 844px);
+    min-height: 0;
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -201,8 +202,8 @@ body {
 .map-card {
     position: relative;
     z-index: 1;
-    flex: 1;
-    min-height: 320px;
+    flex: 1 1 auto;
+    min-height: 220px;
     border-radius: 30px;
     overflow: hidden;
     background: #f7e7df;
@@ -1423,5 +1424,57 @@ body {
 
     .stats-row {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-height: 760px) {
+    .run-page {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .top-bar {
+        gap: 8px;
+    }
+
+    .search-bar {
+        height: 42px;
+    }
+
+    .map-card {
+        min-height: 180px;
+    }
+
+    .control-panel {
+        padding: 12px;
+        border-radius: 24px;
+    }
+
+    .main-run-btn {
+        padding: 12px 14px;
+        border-radius: 20px;
+    }
+
+    .main-run-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .main-run-copy strong {
+        font-size: 15px;
+    }
+}
+
+@media (max-height: 680px) {
+    .map-card {
+        min-height: 150px;
+    }
+
+    .stats-row .stat-item strong {
+        font-size: 20px;
+    }
+
+    .control-panel {
+        padding: 10px;
     }
 }
