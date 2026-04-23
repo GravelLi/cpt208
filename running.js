@@ -121,6 +121,13 @@ const buddyColorPool = [
     "#7eb2cc"
 ];
 
+const playedTracksByCategory = {
+    recovery: new Set(),
+    easy: new Set(),
+    tempo: new Set(),
+    sprint: new Set()
+};
+
 const musicLibrary = {
     recovery: [
         { id: "recovery-1", title: "Beneath the Mask", artist: "Atlas Sound Team", file: "audio/Beneath_the_Mask.mp3" },
@@ -136,13 +143,13 @@ const musicLibrary = {
     ],
     tempo: [
         { id: "tempo-1", title: "Distortion‼", artist: "Kessoku Band", file: "audio/Distortion‼.ogg" },
-        { id: "tempo-2", title: "ADAMAS", artist: "LiSA", file: "audio/ADAMAS.ogg" },
+        { id: "tempo-2", title: "Power (In Your Soul)", artist: "Interupt/Luna LePage", file: "audio/Power (In Your Soul).ogg" },
         { id: "tempo-3", title: "Never Going Back", artist: "The Score", file: "audio/Never_Going_Back.ogg" },
         { id: "tempo-4", title: "Inferno", artist: "Hiroyuki Sawano/mpi/Benjamin", file: "audio/Inferno.ogg" }
     ],
     sprint: [
         { id: "sprint-1", title: "MEGALOVANIA", artist: "Toby Fox", file: "audio/MEGALOVANIA.ogg" },
-        { id: "sprint-2", title: "Power (In Your Soul)", artist: "Interupt/Luna LePage", file: "audio/Power (In Your Soul).ogg" },
+        { id: "sprint-2", title: "ADAMAS", artist: "LiSA", file: "audio/ADAMAS.ogg" },
         { id: "sprint-3", title: "Re:make", artist: "ONE OK ROCK", file: "audio/Re_make.mp3" },
         { id: "sprint-4", title: "Zoo", artist: "Disney/Shakira", file: "audio/Zoo.ogg" }
     ]
@@ -1043,6 +1050,8 @@ function playTrack(track, index) {
         console.log("Audio file is not ready yet.");
     });
 
+    markTrackAsPlayed(currentCategory, track.id);
+
     if (nowPlayingTitle) {
         nowPlayingTitle.textContent = track.title;
     }
@@ -1186,9 +1195,9 @@ function syncAdaptiveMusicByHeartRate() {
     }
 
     const shouldKeepPlaying = !runMusicPlayer.paused;
-    const targetTracks = musicLibrary[recommendedCategory] || [];
+    const nextUnplayed = getNextUnplayedTrack(recommendedCategory);
 
-    if (!targetTracks.length) {
+    if (!nextUnplayed) {
         updateAdaptiveMusicStatus();
         return;
     }
@@ -1197,7 +1206,7 @@ function syncAdaptiveMusicByHeartRate() {
         const previousManualCategory = currentCategory;
 
         currentCategory = recommendedCategory;
-        playTrack(targetTracks[0], 0);
+        playTrack(nextUnplayed.track, nextUnplayed.index);
 
         currentCategory = previousManualCategory;
         renderTabs();
@@ -1205,7 +1214,7 @@ function syncAdaptiveMusicByHeartRate() {
     } else {
         updateAdaptiveMusicStatus();
     }
-}
+    }
 
 function updateAdaptiveMusicStatus() {
     const syncLabel = musicAuto ? "Heart Rate Sync On" : "Heart Rate Sync Off";
@@ -1642,4 +1651,41 @@ function updatePlaybackModeUI() {
             chip.classList.add("active");
         }
     });
+}
+
+function markTrackAsPlayed(category, trackId) {
+    if (!playedTracksByCategory[category]) {
+        playedTracksByCategory[category] = new Set();
+    }
+
+    playedTracksByCategory[category].add(trackId);
+}
+
+function getNextUnplayedTrack(category) {
+    const tracks = musicLibrary[category] || [];
+    if (!tracks.length) {
+        return null;
+    }
+
+    const playedSet = playedTracksByCategory[category] || new Set();
+
+    const unplayedTrack = tracks.find(function (track) {
+        return !playedSet.has(track.id);
+    });
+
+    if (unplayedTrack) {
+        return {
+            track: unplayedTrack,
+            index: tracks.findIndex(function (item) {
+                return item.id === unplayedTrack.id;
+            })
+        };
+    }
+
+    playedTracksByCategory[category] = new Set();
+
+    return {
+        track: tracks[0],
+        index: 0
+    };
 }
