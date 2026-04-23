@@ -8,6 +8,7 @@ const touchBtn = document.getElementById("touchBtn");
 const touchOverlay = document.getElementById("touchOverlay");
 const touchStatusTitle = document.getElementById("touchStatusTitle");
 const touchStatusText = document.getElementById("touchStatusText");
+const sosDialogActions = document.getElementById("sosDialogActions");
 
 const routeTitle = document.getElementById("routeTitle");
 const routeStatus = document.getElementById("routeStatus");
@@ -421,11 +422,11 @@ function applyFakeLocation(position, name) {
     map.setZoomAndCenter(DEFAULT_OVERVIEW_ZOOM, [currentPosition.lng, currentPosition.lat], true);
 
     routeStatus.textContent = "Ready";
-    routeTitle.textContent = "Simulated start is ready";
+    routeTitle.textContent = "Starting point is ready";
     routeNote.textContent = currentAddress;
-    routeMetaText.textContent = buddyMarkers.length > 0 ? getBuddyCountText() : "Campus fake run is ready";
-    panelRouteText.textContent = buddyMarkers.length > 0 ? "Free Run · Buddy" : "Free Run";
-    modePill.textContent = "Free Run";
+    routeMetaText.textContent = buddyMarkers.length > 0 ? getBuddyCountText() : "Ready to start";
+    panelRouteText.textContent = buddyMarkers.length > 0 ? "Route Run · Buddy" : "Route Run";
+    modePill.textContent = "Route Run";
 
     if (walking) {
         walking.clear();
@@ -636,9 +637,9 @@ function finishRun() {
     runToggleLabel.textContent = "Start Run";
     runToggleSub.textContent = "Free Run / Route Run";
     routeStatus.textContent = "Ready";
-    routeTitle.textContent = "Simulated start is ready";
+    routeTitle.textContent = "Starting point is ready";
     routeNote.textContent = currentAddress || "Xi'an Jiaotong-Liverpool University · Ren'ai Road";
-    routeMetaText.textContent = "Campus fake run is ready";
+    routeMetaText.textContent = "Ready to start";
     panelRouteText.textContent = "Free Run";
     modePill.textContent = "Free Run";
 
@@ -681,13 +682,13 @@ function startBuddyMatch() {
     isMatchingBuddy = true;
 
     touchStatusTitle.textContent = "Finding nearby runners...";
-    touchStatusText.textContent = "Tap-to-match prototype is searching for a companion.";
+    touchStatusText.textContent = "Searching for a companion";
     touchOverlay.classList.add("active");
 
     setTimeout(function () {
         touchStatusTitle.textContent = "Matched successfully";
-        touchStatusText.textContent = "A nearby runner has joined your session.";
-    }, 1500);
+        touchStatusText.textContent = "A nearby runner has joined your session";
+    }, 2100);
 
     setTimeout(function () {
         touchOverlay.classList.remove("active");
@@ -698,10 +699,10 @@ function startBuddyMatch() {
         routeMetaText.textContent = currentRoute
             ? currentRoute.distanceKm + " km · " + currentRoute.timeMin + " min · " + getBuddyCountText()
             : getBuddyCountText();
-        panelRouteText.textContent = currentRoute ? "Route Run · Buddy" : "Free Run · Buddy";
-        routeNote.textContent = "Nearby runners joined after tap-to-match. They now follow your simulated run.";
+        panelRouteText.textContent = currentRoute ? "Route Run · Buddy" : "Route Run · Buddy";
+        routeNote.textContent = "Nearby runners joined";
         updateAdaptiveMusicStatus();
-    }, 2800);
+    }, 4900);
 }
 
 function planRouteSegmentToDestination(destination) {
@@ -757,9 +758,9 @@ function planNextFreeRunSegment() {
     const target = targets[freeRunTargetIndex % targets.length];
     freeRunTargetIndex += 1;
 
-    routeTitle.textContent = "Campus loop";
+    routeTitle.textContent = "Suggested route";
     routeStatus.textContent = "Planning";
-    routeNote.textContent = "Fake run is following nearby roads around XJTLU.";
+    routeNote.textContent = "Following a route";
 
     currentRoute = {
         isFreeRun: true,
@@ -1219,22 +1220,21 @@ function syncAdaptiveMusicByHeartRate() {
 function updateAdaptiveMusicStatus() {
     const syncLabel = musicAuto ? "Heart Rate Sync On" : "Heart Rate Sync Off";
     const modeLabel = getPlayModeLabel(playMode);
-    const recLabel = getCategoryLabel(recommendedCategory);
 
     if (!currentTrackId) {
-        musicStatusText.textContent = syncLabel + " · " + modeLabel + " · Recommended " + recLabel;
+        musicStatusText.textContent = syncLabel + " · " + modeLabel;
         return;
     }
 
     const trackInfo = findTrackByIdAnywhere(currentTrackId);
 
     if (!trackInfo || !trackInfo.track) {
-        musicStatusText.textContent = syncLabel + " · " + modeLabel + " · Recommended " + recLabel;
+        musicStatusText.textContent = syncLabel + " · " + modeLabel;
         return;
     }
 
     const playState = runMusicPlayer.paused ? "Paused" : "Playing";
-    musicStatusText.textContent = playState + " · " + trackInfo.track.title + " · Recommended " + recLabel;
+    musicStatusText.textContent = playState + " · " + trackInfo.track.title;
 }
 
 function openMusicPanel() {
@@ -1477,6 +1477,10 @@ function openSosDialog() {
         sosDialogText.textContent = "Are you sure you want to send an emergency alert with your current location to your emergency contact?";
     }
 
+    if (sosDialogActions) {
+        sosDialogActions.style.display = "grid";
+    }
+
     if (sosOverlay) {
         sosOverlay.classList.add("active");
         sosOverlay.setAttribute("aria-hidden", "false");
@@ -1495,12 +1499,23 @@ function confirmSosAlert() {
         sosDialogText.textContent = "Emergency alert sent successfully. Your trusted contact has received your live location.";
     }
 
+    if (sosDialogActions) {
+        sosDialogActions.style.display = "none";
+    }
+
     setTimeout(function () {
         closeSosDialog();
-        if (sosDialogText) {
-            sosDialogText.textContent = "Are you sure you want to send an emergency alert with your current location to your emergency contact?";
-        }
-    }, 1200);
+
+        setTimeout(function () {
+            if (sosDialogText) {
+                sosDialogText.textContent = "Are you sure you want to send an emergency alert with your current location to your emergency contact?";
+            }
+
+            if (sosDialogActions) {
+                sosDialogActions.style.display = "grid";
+            }
+        }, 240);
+    }, 1800);
 }
 
 function getAllCategoryKeys() {

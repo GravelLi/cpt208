@@ -1399,6 +1399,17 @@ body {
     box-shadow: 0 8px 18px rgba(217, 71, 58, 0.18);
 }
 
+.map-overlay-info {
+    display: none !important;
+}
+
+#runToggleSub {
+    display: none !important;
+}
+
+.status-strip {
+    display: none !important;
+}
 @media (max-width: 380px) {
     .run-page {
         padding: 12px;
