@@ -794,3 +794,42 @@ body {
         height: 118px;
     }
 }
+
+@media (max-width: 480px) {
+    .trend-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .trend-side-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .progress-visual-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-track-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .track-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .track-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .track-head span {
+        white-space: normal;
+    }
+}
