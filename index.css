@@ -26,24 +26,24 @@
 html,
 body {
     width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
+    height: 100%;
+    overflow: hidden;
 }
 
 body {
     font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     background: linear-gradient(180deg, var(--bg-main) 0%, #f3ddd4 100%);
     color: var(--text-dark);
-    overflow-y: auto;
 }
 
 .app-shell {
     width: 100%;
-    min-height: 100dvh;
+    height: 100dvh;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 12px;
+    overflow: hidden;
 }
 
 .phone-frame {
@@ -766,8 +766,8 @@ body {
 @media (max-width: 430px) {
     .phone-frame {
         width: 100%;
-        min-height: 100dvh;
-        max-height: 100dvh;
+        height: calc(100dvh - 24px);
+        max-height: calc(100dvh - 24px);
         border-radius: 28px;
     }
 }
