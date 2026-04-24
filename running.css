@@ -815,6 +815,7 @@ body {
     position: absolute;
     inset: 0;
     height: 100%;
+    min-height: 0;
     border-radius: 0;
     background:
         radial-gradient(circle at top right, rgba(255, 110, 90, 0.15), transparent 24%),
@@ -951,10 +952,11 @@ body {
 }
 
 .track-section {
-    flex: 1;
+    flex: 1 1 auto;
     min-height: 0;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .section-head {
@@ -978,12 +980,14 @@ body {
 }
 
 .track-list {
-    flex: 1;
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding-right: 2px;
+    padding-bottom: 8px;
 }
 
 .track-item {
@@ -1425,7 +1429,6 @@ body {
 
     .music-panel-sheet {
         padding: 14px;
-        height: 84%;
     }
 
     .stats-row {
@@ -1486,11 +1489,20 @@ body {
 }
 
 @media (max-width: 480px) {
+    .music-panel-sheet {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .music-control-card {
+        padding: 10px 12px;
+    }
+
     .playback-card {
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
+        gap: 8px;
     }
 
     .music-control-copy {
@@ -1510,8 +1522,8 @@ body {
     .playback-chip {
         width: 100%;
         min-width: 0;
-        padding: 10px 12px;
-        border-radius: 16px;
+        padding: 9px 10px;
+        border-radius: 14px;
         background: rgba(255, 244, 239, 0.96);
         box-shadow: inset 0 0 0 1px #f0ddd3;
         white-space: nowrap;
@@ -1522,9 +1534,77 @@ body {
         grid-column: 1 / -1;
     }
 
-    .playback-chip.active {
-        background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-deep) 100%);
-        color: #fffdf9;
-        box-shadow: 0 8px 18px rgba(217, 71, 58, 0.18);
+    .category-tabs {
+        gap: 6px;
+    }
+
+    .category-tab {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+    .track-item {
+        grid-template-columns: 40px 1fr 48px;
+        gap: 10px;
+        padding: 9px 9px 9px 8px;
+    }
+
+    .track-index {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+    }
+
+    .track-action {
+        width: 48px;
+        height: 48px;
+    }
+
+    .bottom-player {
+        gap: 10px;
+    }
+
+    .player-control {
+        height: 50px;
+        border-radius: 18px;
+    }
+
+    .sync-card {
+        display: flex !important;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .sync-card .music-control-copy {
+        display: block;
+        min-width: 0;
+    }
+
+    .sync-card .music-control-label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+    }
+
+    .sync-card .music-control-copy p {
+        font-size: 10px;
+        line-height: 1.3;
+    }
+
+    .sync-switch {
+        width: 46px;
+        height: 28px;
+        align-self: flex-end;
+        flex-shrink: 0;
+    }
+
+    .sync-slider::after {
+        width: 20px;
+        height: 20px;
+    }
+
+    .sync-switch input:checked + .sync-slider::after {
+        transform: translateX(18px);
     }
 }
