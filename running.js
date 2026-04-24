@@ -75,7 +75,7 @@ let runElapsedSeconds = 0;
 let simulatedDistance = 0;
 let simulatedHeartRate = 98;
 let simulatedPaceSeconds = 378;
-let musicAuto = true;
+let musicAuto = false;
 
 let currentPathPoints = [];
 let currentPathIndex = 0;
@@ -195,12 +195,12 @@ function initMap() {
 }
 
 function initMusicPanel() {
-    musicAuto = true;
+    musicAuto = false;
     playMode = "cross-list";
     currentCategory = getHeartRateCategory(simulatedHeartRate);
 
     if (adaptiveToggle) {
-        adaptiveToggle.checked = true;
+        adaptiveToggle.checked = false;
     }
 
     renderRecommendation();
