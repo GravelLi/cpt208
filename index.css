@@ -48,22 +48,20 @@ body {
 
 .phone-frame {
     width: min(100%, 390px);
-    min-height: min(96dvh, 844px);
-    max-height: min(96dvh, 844px);
+    height: min(96dvh, 844px);
     background:
         radial-gradient(circle at top right, rgba(255, 110, 90, 0.20), transparent 24%),
         radial-gradient(circle at top left, rgba(255, 193, 107, 0.18), transparent 30%),
         linear-gradient(180deg, #f8eee9 0%, #f3e3db 100%);
     border: 1px solid rgba(210, 120, 105, 0.18);
     border-radius: 34px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-shadow: 0 24px 60px rgba(122, 65, 57, 0.18);
+    overflow: hidden;
+    box-shadow:
+        0 24px 60px rgba(122, 65, 57, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
     position: relative;
     display: flex;
     flex-direction: column;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
 }
 
 .phone-frame::-webkit-scrollbar {
@@ -131,11 +129,18 @@ body {
 
 .main-content {
     flex: 1;
+    min-height: 0;
     padding: 8px 16px 16px;
-    overflow: visible;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    scrollbar-width: none;
+}
+
+.main-content::-webkit-scrollbar {
+    display: none;
 }
 
 .story-card {
@@ -689,18 +694,27 @@ body {
 }
 
 .bottom-nav {
-    position: sticky;
-    bottom: 0;
-    margin: 0 14px 14px;
-    background: rgba(255, 250, 246, 0.96);
-    backdrop-filter: blur(10px);
+    margin: 0 14px 16px;
+    background: rgba(255, 250, 246, 0.92);
+    backdrop-filter: blur(12px);
     border-radius: 22px;
     padding: 8px 6px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    box-shadow: 0 12px 30px rgba(120, 58, 50, 0.14);
-    z-index: 5;
+    box-shadow: 0 10px 24px rgba(120, 58, 50, 0.12);
     flex-shrink: 0;
+}
+
+.story-card {
+    flex-shrink: 0;
+}
+
+.main-content > section {
+    flex: 0 0 auto;
+}
+
+.main-content {
+    padding-bottom: 20px;
 }
 
 .nav-item {
