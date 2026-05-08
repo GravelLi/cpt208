@@ -1,6 +1,6 @@
 # HerRun
 
-HerRun is a mobile-first running web app prototype for the CPT208 Human-Centric Computing group project. It belongs to the  **C3 Go Runners** topic and focuses on creating a supportive, playful, and body-aware running experience for student runners, especially women runners.
+HerRun is a mobile-first running web app prototype for the CPT208 Human-Centric Computing group project. It belongs to the **C1 Go Runners** topic and focuses on creating a supportive, playful, and body-aware running experience for student runners, especially women runners.
 
 The prototype combines mood-aware goals, cycle-aware running suggestions, safety support, adaptive music, and wearable-style health feedback.
 
