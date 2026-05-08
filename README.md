@@ -48,8 +48,6 @@ cd cpt208
 
 3. Open `index.html` in a browser.
 
-For a better preview, open the folder in VS Code and use a local server extension such as Live Server.
-
 ## Project Structure
 
 ```text
