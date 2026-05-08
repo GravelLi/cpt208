@@ -1,6 +1,6 @@
 # HerRun
 
-HerRun is a mobile-first running web app prototype for the CPT208 Human-Centric Computing group project. It belongs to the **C1 Go Runners** topic and focuses on creating a supportive, playful, and body-aware running experience for student runners, especially women runners.
+HerRun is a mobile-first running web app prototype for the CPT208 Human-Centric Computing group project. It belongs to the  **C3 Go Runners** topic and focuses on creating a supportive, playful, and body-aware running experience for student runners, especially women runners.
 
 The prototype combines mood-aware goals, cycle-aware running suggestions, safety support, adaptive music, and wearable-style health feedback.
 
@@ -73,17 +73,6 @@ audio/              Local music files
 README.md           Project documentation
 ```
 
-Portfolio pages may also be included:
-
-```text
-motivation.html
-requirements.html
-ideation.html
-technical.html
-evaluation.html
-style.css
-```
-
 ## Data Handling
 
 This is a high-fidelity front-end prototype. It does not collect real medical, safety, or wearable data.
@@ -101,27 +90,16 @@ It helped with:
 * HTML and CSS layout suggestions
 * JavaScript debugging support
 * Responsive design refinement
-* Portfolio wording improvement
 * README drafting
-* Technical reflection writing
 
 All AI-assisted code and text were reviewed and edited by the team. The project motivation, user requirements, design logic, and final design decisions remained human-led.
 
 ## Team Contributions
 
-* **Leyi Li**: Front-end implementation, responsive CSS, interaction logic, running page, cycle page, health data page, profile page, and technical portfolio page.
+* **Leyi Li**: Front-end implementation, responsive CSS, interaction logic, running page, cycle page, health data page and profile page.
 * **Nuoqian Xu**: User research, concept design, early sketches, persona and requirement development.
 * **Jinlong Huang**: Requirement analysis, research and product comparison, portfolio content organization, and poster support.
 * **Shuheng Hu**: Poster development, testing support, A/B testing, evaluation feedback, and presentation preparation.
-
-## Limitations
-
-* No backend database
-* No real account system
-* No real wearable integration
-* No real emergency contact service
-* Simulated health and running data only
-* Prototype-level map and route interaction
 
 ## Tools Used
 
@@ -130,7 +108,6 @@ All AI-assisted code and text were reviewed and edited by the team. The project 
 * Visual Studio Code
 * ChatGPT
 * AMap
-* CapCut
 
 ## License
 
