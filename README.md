@@ -94,13 +94,6 @@ It helped with:
 
 All AI-assisted code and text were reviewed and edited by the team. The project motivation, user requirements, design logic, and final design decisions remained human-led.
 
-## Team Contributions
-
-* **Leyi Li**: Front-end implementation, responsive CSS, interaction logic, running page, cycle page, health data page and profile page.
-* **Nuoqian Xu**: User research, concept design, early sketches, persona and requirement development.
-* **Jinlong Huang**: Requirement analysis, research and product comparison, portfolio content organization, and poster support.
-* **Shuheng Hu**: Poster development, testing support, A/B testing, evaluation feedback, and presentation preparation.
-
 ## Tools Used
 
 * GitHub Pages
