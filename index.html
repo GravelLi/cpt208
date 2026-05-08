@@ -24,33 +24,35 @@
                 <section class="story-card hero-story-card">
                     <div class="mission-card">
                         <div class="mission-main">
-                            <span class="mission-tag">Today's Goal</span>
-                            <h3>18-min easy jog + 3-min breathing</h3>
-                            <p>Finish it to light up today's mood star.</p>
+                            <span class="mission-tag" id="homeGoalTag">Today's Goal</span>
+                            <h3 id="homeGoalTitle">18-min easy jog + 3-min breathing</h3>
+                            <p id="homeGoalText">Today feels steady, so HerRun keeps the plan light, flexible, and comfortable.</p>
                         </div>
                         <a href="running.html" class="primary-pill">Start</a>
                     </div>
 
                     <div class="why-row">
                         <div class="why-chip">
-                            <span>🌤️</span>
+                            <span id="homeMoodIcon">🌤️</span>
                             <div>
                                 <strong>Current Mood</strong>
-                                <p>A little tired, so today's goal stays light.</p>
+                                <p id="homeMoodText">Calm and balanced today, suitable for an easy run.</p>
                             </div>
                         </div>
+
                         <div class="why-chip">
-                            <span>🩺</span>
+                            <span id="homeHealthIcon">🩺</span>
                             <div>
                                 <strong>Health Signal</strong>
-                                <p>Sleep was average, recovery is moderate.</p>
+                                <p id="homeHealthText">Recovery is moderate, so the pace should stay relaxed.</p>
                             </div>
                         </div>
+
                         <div class="why-chip">
-                            <span>🌙</span>
+                            <span id="homeCycleIcon">🌙</span>
                             <div>
                                 <strong>Cycle Reminder</strong>
-                                <p>Luteal phase, take it a little easier today.</p>
+                                <p id="homeCycleText">Cycle Day 8. No period symptoms recorded today.</p>
                             </div>
                         </div>
                     </div>
@@ -108,14 +110,14 @@
                         </div>
                     </div>
 
-                    <div class="smart-switch-card">
+                    <a href="cycle-log.html" class="smart-switch-card cycle-log-card">
                         <div class="smart-copy">
-                            <p class="smart-kicker">Pressure-Relief Mode On</p>
-                            <h4>Not feeling good today still doesn't mean failure</h4>
-                            <p>If running feels hard, it will switch to 10 minutes of walking + stretching, and you still get today's star.</p>
+                            <p class="smart-kicker">Cycle Calendar</p>
+                            <h4>Track your period and adjust today’s run</h4>
+                            <p>Log today’s cycle status, view period days, and get gentle reminders before your body needs rest.</p>
                         </div>
-                        <div class="switch-badge">ON</div>
-                    </div>
+                        <div class="switch-badge cycle-log-badge">View</div>
+                    </a>
                 </section>
 
                 <section class="story-card star-card">
@@ -292,5 +294,142 @@
             </nav>
         </div>
     </div>
+
+<script>
+    const homeGoalTag = document.getElementById("homeGoalTag");
+    const homeGoalTitle = document.getElementById("homeGoalTitle");
+    const homeGoalText = document.getElementById("homeGoalText");
+
+    const homeMoodIcon = document.getElementById("homeMoodIcon");
+    const homeMoodText = document.getElementById("homeMoodText");
+
+    const homeHealthIcon = document.getElementById("homeHealthIcon");
+    const homeHealthText = document.getElementById("homeHealthText");
+
+    const homeCycleIcon = document.getElementById("homeCycleIcon");
+    const homeCycleText = document.getElementById("homeCycleText");
+
+    const STORAGE_KEY = "herRunCycleRecordMay8";
+
+    function getSavedCycleRecord() {
+        const savedRecord = localStorage.getItem(STORAGE_KEY);
+
+        if (!savedRecord) {
+            return {
+                status: "Normal",
+                symptoms: ["Feeling Fine"]
+            };
+        }
+
+        try {
+            const record = JSON.parse(savedRecord);
+
+            if (!record.status || !Array.isArray(record.symptoms)) {
+                return {
+                    status: "Normal",
+                    symptoms: ["Feeling Fine"]
+                };
+            }
+
+            return record;
+        } catch (error) {
+            return {
+                status: "Normal",
+                symptoms: ["Feeling Fine"]
+            };
+        }
+    }
+
+    function hasSymptom(symptoms, symptomName) {
+        return symptoms.includes(symptomName);
+    }
+
+    function updateHomeFromCycleRecord() {
+        const record = getSavedCycleRecord();
+        const status = record.status;
+        const symptoms = record.symptoms;
+
+        const hasLowEnergy = hasSymptom(symptoms, "Low Energy");
+        const hasCramps = hasSymptom(symptoms, "Cramps");
+        const hasBackPain = hasSymptom(symptoms, "Back Pain");
+        const hasHeadache = hasSymptom(symptoms, "Headache");
+        const hasMoodSwing = hasSymptom(symptoms, "Mood Swing");
+        const feelingFine = hasSymptom(symptoms, "Feeling Fine");
+
+        if (status === "Period") {
+            homeGoalTag.textContent = "Today's Gentle Goal";
+            homeGoalTitle.textContent = "10-min walk + 5-min stretching";
+
+            if (hasCramps || hasLowEnergy || hasBackPain || hasHeadache) {
+                homeGoalText.textContent = "Period symptoms were recorded today, so HerRun switches to a softer recovery goal.";
+                homeMoodIcon.textContent = "🥺";
+                homeMoodText.textContent = "Your body may need more care today. Gentle movement is enough.";
+                homeHealthIcon.textContent = "🩺";
+                homeHealthText.textContent = "Symptoms were recorded, so avoid high-intensity running.";
+                homeCycleIcon.textContent = "🩸";
+                homeCycleText.textContent = `Period day recorded. Symptoms: ${symptoms.join(", ")}.`;
+            } else {
+                homeGoalText.textContent = "Period was recorded today, so HerRun keeps the plan soft and flexible.";
+                homeMoodIcon.textContent = "🌤️";
+                homeMoodText.textContent = "Feeling relatively stable, but the goal should stay gentle.";
+                homeHealthIcon.textContent = "🩺";
+                homeHealthText.textContent = "Keep the pace easy and stop if discomfort appears.";
+                homeCycleIcon.textContent = "🩸";
+                homeCycleText.textContent = "Period day recorded. Walking or stretching can still count as progress.";
+            }
+
+            return;
+        }
+
+        if (status === "Normal" && feelingFine) {
+            homeGoalTag.textContent = "Today's Goal";
+            homeGoalTitle.textContent = "18-min easy jog + 3-min breathing";
+            homeGoalText.textContent = "Today feels steady, so HerRun keeps the plan light, flexible, and comfortable.";
+
+            homeMoodIcon.textContent = "🌤️";
+            homeMoodText.textContent = "Calm and balanced today, suitable for an easy run.";
+
+            homeHealthIcon.textContent = "🩺";
+            homeHealthText.textContent = "Recovery is moderate, so the pace should stay relaxed.";
+
+            homeCycleIcon.textContent = "🌙";
+            homeCycleText.textContent = "Cycle Day 8. No period symptoms recorded today.";
+
+            return;
+        }
+
+        if (status === "Normal" && (hasLowEnergy || hasMoodSwing || hasHeadache || hasBackPain)) {
+            homeGoalTag.textContent = "Today's Flexible Goal";
+            homeGoalTitle.textContent = "12-min easy jog or gentle walk";
+            homeGoalText.textContent = "Some discomfort was recorded today, so HerRun keeps the goal flexible.";
+
+            homeMoodIcon.textContent = hasMoodSwing ? "🥺" : "🌥️";
+            homeMoodText.textContent = `Today's record shows: ${symptoms.join(", ")}. Keep the run easy.`;
+
+            homeHealthIcon.textContent = "🩺";
+            homeHealthText.textContent = "Choose a lower-intensity option if your body feels strained.";
+
+            homeCycleIcon.textContent = "🌙";
+            homeCycleText.textContent = "Cycle Day 8. Not a period day, but symptoms can still affect training.";
+
+            return;
+        }
+
+        homeGoalTag.textContent = "Today's Goal";
+        homeGoalTitle.textContent = "18-min easy jog + 3-min breathing";
+        homeGoalText.textContent = "Today feels steady, so HerRun keeps the plan light and comfortable.";
+
+        homeMoodIcon.textContent = "🌤️";
+        homeMoodText.textContent = "Feeling mostly stable today.";
+
+        homeHealthIcon.textContent = "🩺";
+        homeHealthText.textContent = "Keep the pace relaxed and adjust if needed.";
+
+        homeCycleIcon.textContent = "🌙";
+        homeCycleText.textContent = `Cycle Day 8. Today's record: ${symptoms.join(", ")}.`;
+    }
+
+    updateHomeFromCycleRecord();
+</script>
 </body>
 </html>

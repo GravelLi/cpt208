@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycle Calendar</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="app-shell">
+        <div class="phone-frame">
+            <header class="top-bar cycle-top-bar">
+                <a href="index.html" class="cycle-back-btn" aria-label="Back to home">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+
+                <div class="header-text cycle-header-text">
+                    <p class="mini-label">Body-aware running</p>
+                    <h1>Cycle Calendar</h1>
+                </div>
+            </header>
+
+            <main class="main-content cycle-content">
+                <section class="story-card cycle-calendar-card">
+                    <div class="cycle-calendar-top">
+                        <button class="cycle-calendar-arrow" type="button" aria-label="Previous month">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+
+                        <div class="cycle-calendar-month">
+                            <h3>May 2026</h3>
+                            <p>Tap a date to view records.</p>
+                        </div>
+
+                        <button class="cycle-calendar-arrow" type="button" aria-label="Next month">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="cycle-week-row">
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                        <span>Sun</span>
+                    </div>
+
+                    <div class="cycle-calendar-grid">
+                        <button class="cycle-day cycle-muted-day" type="button">
+                            <span>27</span>
+                        </button>
+
+                        <button class="cycle-day cycle-muted-day" type="button">
+                            <span>28</span>
+                        </button>
+
+                        <button class="cycle-day cycle-muted-day" type="button">
+                            <span>29</span>
+                        </button>
+
+                        <button class="cycle-day cycle-muted-day" type="button">
+                            <span>30</span>
+                        </button>
+
+                        <button class="cycle-day cycle-period-day" type="button">
+                            <span>1</span>
+                        </button>
+
+                        <button class="cycle-day cycle-period-day" type="button">
+                            <span>2</span>
+                        </button>
+
+                        <button class="cycle-day cycle-period-day" type="button">
+                            <span>3</span>
+                        </button>
+
+                        <button class="cycle-day cycle-period-day" type="button">
+                            <span>4</span>
+                        </button>
+
+                        <button class="cycle-day cycle-period-day" type="button">
+                            <span>5</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>6</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>7</span>
+                        </button>
+
+                        <button class="cycle-day cycle-today-day cycle-selected-day" type="button" id="cycleDay8">
+                            <span>8</span>
+                            <small class="cycle-day-record" id="cycleDay8Record"></small>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>9</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>10</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>11</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>12</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>13</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>14</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>15</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>16</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>17</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>18</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>19</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>20</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>21</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>22</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>23</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>24</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>25</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>26</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>27</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>28</span>
+                        </button>
+
+                        <button class="cycle-day" type="button">
+                            <span>29</span>
+                        </button>
+
+                        <button class="cycle-day cycle-predicted-period-day" type="button">
+                            <span>30</span>
+                            <small>P?</small>
+                        </button>
+
+                        <button class="cycle-day cycle-predicted-period-day" type="button">
+                            <span>31</span>
+                            <small>P?</small>
+                        </button>
+                    </div>
+
+                    <div class="cycle-calendar-legend">
+                        <div>
+                            <span class="cycle-legend-dot cycle-period-dot"></span>
+                            <p>Period</p>
+                        </div>
+
+                        <div>
+                            <span class="cycle-legend-dot cycle-predicted-dot"></span>
+                            <p>Predicted Period</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="story-card cycle-today-log-card">
+                    <div class="cycle-today-log-header">
+                        <div>
+                            <p class="cycle-kicker cycle-soft-kicker">Selected Date</p>
+                            <h3 id="selectedDateTitle">May 8 · Today</h3>
+                        </div>
+
+                        <span class="cycle-today-log-pill" id="cycleStatusPill">Cycle Day 8</span>
+                    </div>
+
+                    <div class="cycle-day-mood-card" id="cycleDayMoodCard">
+                        <div class="cycle-day-mood-icon" id="cycleDayMoodIcon">😌</div>
+
+                        <div class="cycle-day-mood-copy">
+                            <span>Mood on this day</span>
+                            <strong id="cycleDayMoodTitle">Calm</strong>
+                            <p id="cycleDayMoodText">Feeling steady today. A light and comfortable run is suitable.</p>
+                        </div>
+                    </div>                    
+
+                    <div class="cycle-log-options cycle-log-options-two">
+                        <button class="cycle-log-option" type="button" data-cycle-status="Period">
+                            <span>🩸</span>
+                            <strong>Period</strong>
+                        </button>
+
+                        <button class="cycle-log-option active-cycle-log-option" type="button" data-cycle-status="Normal">
+                            <span>🌿</span>
+                            <strong>Normal</strong>
+                        </button>
+                    </div>
+
+                    <div class="cycle-quick-log-section">
+                        <p>Today’s symptoms</p>
+
+                        <div class="cycle-symptom-grid">
+                            <button class="cycle-symptom-chip" type="button" data-symptom="Cramps">Cramps</button>
+                            <button class="cycle-symptom-chip" type="button" data-symptom="Low Energy">Low Energy</button>
+                            <button class="cycle-symptom-chip" type="button" data-symptom="Headache">Headache</button>
+                            <button class="cycle-symptom-chip" type="button" data-symptom="Back Pain">Back Pain</button>
+                            <button class="cycle-symptom-chip" type="button" data-symptom="Mood Swing">Mood Swing</button>
+                            <button class="cycle-symptom-chip active-cycle-symptom-chip" type="button" data-symptom="Feeling Fine">Feeling Fine</button>
+                        </div>
+                    </div>
+
+                    <button class="cycle-save-btn" type="button" id="saveCycleRecord">Save Today’s Record</button>
+                </section>
+
+<section class="story-card cycle-summary-card">
+    <div class="cycle-section-header">
+        <div>
+            <p class="cycle-kicker cycle-soft-kicker">Based on recent records</p>
+            <h3>Cycle Summary</h3>
+        </div>
+    </div>
+
+    <div class="cycle-summary-grid">
+        <div class="cycle-summary-item">
+            <span>Current Cycle Day</span>
+            <strong>Day 8</strong>
+        </div>
+
+        <div class="cycle-summary-item">
+            <span>Recorded Period</span>
+            <strong>May 1–5</strong>
+        </div>
+
+        <div class="cycle-summary-item">
+            <span>Average Cycle</span>
+            <strong>28 days</strong>
+        </div>
+
+        <div class="cycle-summary-item highlight-summary-item">
+            <span>Next Period</span>
+            <strong>Around May 30</strong>
+        </div>
+    </div>
+
+    <p class="cycle-summary-note">
+        Period predictions are estimates and may shift depending on sleep, stress, training load, and recent cycle changes.
+    </p>
+</section>
+
+<section class="story-card cycle-reminder-card">
+    <div class="cycle-info-row">
+        <div class="cycle-reminder-icon">🔔</div>
+
+        <div class="cycle-reminder-copy">
+            <p class="cycle-kicker cycle-soft-kicker">Smart Reminder</p>
+            <h3>Reminder around May 27</h3>
+            <p>
+                Your next period is estimated around May 30. HerRun will remind you a few days earlier and keep your plan flexible.
+            </p>
+        </div>
+    </div>
+
+    <div class="cycle-mini-tip">
+        <span>Why this matters</span>
+        <p>Before a predicted period, the app avoids high-pressure goals and suggests easier options if you report discomfort.</p>
+    </div>
+</section>
+
+<section class="story-card cycle-run-card">
+    <div class="cycle-info-row">
+        <div class="cycle-run-icon">👟</div>
+
+        <div class="cycle-run-copy">
+            <p class="cycle-kicker cycle-soft-kicker">Today’s Running Adjustment</p>
+            <h3>Flexible movement is recommended</h3>
+            <p>
+                Based on today’s cycle status and symptoms, HerRun can suggest an easy run, walking, stretching, or rest.
+            </p>
+        </div>
+    </div>
+
+    <div class="cycle-adjust-list">
+        <div class="cycle-adjust-item">
+            <span>🌿</span>
+            <p>Normal day: keep an easy, comfortable running goal.</p>
+        </div>
+
+        <div class="cycle-adjust-item">
+            <span>🩸</span>
+            <p>Period day: reduce intensity if cramps, fatigue, or heavy flow appear.</p>
+        </div>
+
+        <div class="cycle-adjust-item">
+            <span>🫶</span>
+            <p>Low-energy day: walking or stretching can still count as progress.</p>
+        </div>
+    </div>
+</section>
+            </main>
+
+            <nav class="bottom-nav">
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M4 11.5L12 5L20 11.5V19C20 19.55 19.55 20 19 20H15V14H9V20H5C4.45 20 4 19.55 4 19V11.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">Home</span>
+                </a>
+
+                <a href="running.html" class="nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="17.5" cy="5.5" r="2.5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M13 8L10.5 11.5L13.5 13.5L15.5 10.5L18 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10.5 11.5L8.5 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M7 9L10 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">Running</span>
+                </a>
+
+                <a href="activity.html" class="nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path
+                                d="M12 20.5C12 20.5 4 15.36 2.57 10.28C1.55 6.66 4.08 4 7.13 4C9.08 4 10.67 5 12 6.53C13.33 5 14.92 4 16.87 4C19.92 4 22.45 6.66 21.43 10.28C20 15.36 12 20.5 12 20.5Z"
+                                stroke="currentColor"
+                                stroke-width="1.9"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M6.8 12H9.1L10.4 9.8L12.2 14.4L13.7 11.7H17.2"
+                                stroke="currentColor"
+                                stroke-width="1.9"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </span>
+                    <span class="nav-text">Health</span>
+                </a>
+
+                <a href="profile.html" class="nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M5 20C5.8 16.8 8.43 15 12 15C15.57 15 18.2 16.8 19 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span class="nav-text">Profile</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+<script>
+    const cycleStatusButtons = document.querySelectorAll(".cycle-log-option");
+    const symptomButtons = document.querySelectorAll(".cycle-symptom-chip");
+    const calendarDays = document.querySelectorAll(".cycle-calendar-grid .cycle-day:not(.cycle-muted-day)");
+
+    const saveCycleRecordButton = document.getElementById("saveCycleRecord");
+    const cycleStatusPill = document.getElementById("cycleStatusPill");
+
+    const selectedDateTitle = document.getElementById("selectedDateTitle");
+    const cycleDayMoodIcon = document.getElementById("cycleDayMoodIcon");
+    const cycleDayMoodTitle = document.getElementById("cycleDayMoodTitle");
+    const cycleDayMoodText = document.getElementById("cycleDayMoodText");
+
+    const STORAGE_KEY = "herRunCycleRecordMay8";
+
+    let selectedDay = 8;
+    let selectedCycleStatus = "Normal";
+    let selectedSymptoms = ["Feeling Fine"];
+
+    const dayMoodData = {
+        1: {
+            title: "Low Energy",
+            icon: "😣",
+            text: "Period started today. A short walk or gentle stretching may feel better than running.",
+            pill: "Period Day 1",
+            status: "Period",
+            symptoms: ["Cramps", "Low Energy"]
+        },
+        2: {
+            title: "Sensitive",
+            icon: "🥺",
+            text: "Energy may feel unstable. Keep movement soft and avoid high-pressure goals.",
+            pill: "Period Day 2",
+            status: "Period",
+            symptoms: ["Cramps", "Mood Swing"]
+        },
+        3: {
+            title: "Tired but Stable",
+            icon: "😴",
+            text: "A recovery-focused day. Walking, stretching, or rest can still count as progress.",
+            pill: "Period Day 3",
+            status: "Period",
+            symptoms: ["Low Energy", "Back Pain"]
+        },
+        4: {
+            title: "Getting Better",
+            icon: "🌤️",
+            text: "Body condition is improving. A very light jog is possible if you feel comfortable.",
+            pill: "Period Day 4",
+            status: "Period",
+            symptoms: ["Low Energy"]
+        },
+        5: {
+            title: "Gentle Recovery",
+            icon: "🍃",
+            text: "Period is almost over. Keep the plan easy and listen to your body.",
+            pill: "Period Day 5",
+            status: "Period",
+            symptoms: ["Feeling Fine"]
+        },
+        6: {
+            title: "Recovering",
+            icon: "🌿",
+            text: "Your period has just ended. Keep today comfortable and avoid pushing intensity too quickly.",
+            pill: "Cycle Day 6",
+            status: "Normal",
+            symptoms: ["Feeling Fine"]
+        },
+        7: {
+            title: "More Balanced",
+            icon: "🌤️",
+            text: "Energy may be returning. A light jog or normal easy run can be suitable today.",
+            pill: "Cycle Day 7",
+            status: "Normal",
+            symptoms: ["Feeling Fine"]
+        },
+        8: {
+            title: "Calm",
+            icon: "😌",
+            text: "Feeling steady today. A light and comfortable run is suitable.",
+            pill: "Cycle Day 8",
+            status: "Normal",
+            symptoms: ["Feeling Fine"]
+        },
+        30: {
+            title: "Predicted Period",
+            icon: "🌙",
+            text: "Your next period may start around this day. HerRun will prepare a softer plan.",
+            pill: "Predicted",
+            status: "Normal",
+            symptoms: ["Feeling Fine"]
+        },
+        31: {
+            title: "Predicted Period",
+            icon: "🌙",
+            text: "This is part of the predicted period window. Keep the plan flexible.",
+            pill: "Predicted",
+            status: "Normal",
+            symptoms: ["Feeling Fine"]
+        }
+    };
+
+    function getDayButton(day) {
+        return Array.from(calendarDays).find((button) => {
+            const dayNumber = button.querySelector("span")?.textContent.trim();
+            return Number(dayNumber) === day;
+        });
+    }
+
+    function getDayRecordElement(dayButton) {
+        let recordElement = dayButton.querySelector(".cycle-day-record");
+
+        if (!recordElement) {
+            recordElement = document.createElement("small");
+            recordElement.className = "cycle-day-record";
+            dayButton.appendChild(recordElement);
+        }
+
+        return recordElement;
+    }
+
+    function buildTodayMoodData(status, symptoms) {
+        const symptomText = symptoms.join(", ");
+
+        if (status === "Period") {
+            return {
+                title: "Needs Care",
+                icon: "🥺",
+                text: `Recorded as period today with ${symptomText}. HerRun will recommend walking and stretching.`,
+                pill: "Period Day",
+                status: "Period",
+                symptoms: [...symptoms]
+            };
+        }
+
+        return {
+            title: "Calm",
+            icon: "😌",
+            text: `Recorded as normal today with ${symptomText}. A light and comfortable run is suitable.`,
+            pill: "Cycle Day 8",
+            status: "Normal",
+            symptoms: [...symptoms]
+        };
+    }
+
+    function applyTodayCalendarRecord(status) {
+        const cycleDay8 = getDayButton(8);
+        const cycleDay8Record = getDayRecordElement(cycleDay8);
+
+        cycleDay8.classList.remove("cycle-record-period", "cycle-record-normal");
+
+        if (status === "Period") {
+            cycleDay8.classList.add("cycle-record-period");
+            cycleDay8Record.textContent = "Period";
+        } else {
+            cycleDay8.classList.add("cycle-record-normal");
+            cycleDay8Record.textContent = "Normal";
+        }
+    }
+
+    function saveTodayRecordToStorage() {
+        const record = {
+            status: selectedCycleStatus,
+            symptoms: selectedSymptoms
+        };
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(record));
+    }
+
+    function loadTodayRecordFromStorage() {
+        const savedRecord = localStorage.getItem(STORAGE_KEY);
+
+        if (!savedRecord) {
+            return false;
+        }
+
+        try {
+            const record = JSON.parse(savedRecord);
+
+            if (!record.status || !Array.isArray(record.symptoms)) {
+                return false;
+            }
+
+            selectedCycleStatus = record.status;
+            selectedSymptoms = [...record.symptoms];
+
+            dayMoodData[8] = buildTodayMoodData(selectedCycleStatus, selectedSymptoms);
+            applyTodayCalendarRecord(selectedCycleStatus);
+
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function renderCycleStatus(status) {
+        cycleStatusButtons.forEach((button) => {
+            button.classList.remove("active-cycle-log-option");
+
+            if (button.dataset.cycleStatus === status) {
+                button.classList.add("active-cycle-log-option");
+            }
+        });
+    }
+
+    function renderSymptoms(symptoms) {
+        symptomButtons.forEach((button) => {
+            button.classList.remove("active-cycle-symptom-chip");
+
+            if (symptoms.includes(button.dataset.symptom)) {
+                button.classList.add("active-cycle-symptom-chip");
+            }
+        });
+    }
+
+    function updateSelectedDate(day) {
+        selectedDay = day;
+
+        calendarDays.forEach((button) => {
+            button.classList.remove("cycle-selected-day");
+        });
+
+        const selectedButton = getDayButton(day);
+
+        if (selectedButton) {
+            selectedButton.classList.add("cycle-selected-day");
+        }
+
+        if (day === 8) {
+            selectedDateTitle.textContent = "May 8 · Today";
+        } else {
+            selectedDateTitle.textContent = `May ${day}`;
+        }
+
+        const moodData = dayMoodData[day] || {
+            title: "No Mood Record",
+            icon: "🫧",
+            text: "No mood has been recorded for this day yet.",
+            pill: `Cycle Day ${day}`,
+            status: "Normal",
+            symptoms: ["Feeling Fine"]
+        };
+
+        cycleStatusPill.textContent = moodData.pill;
+        cycleDayMoodIcon.textContent = moodData.icon;
+        cycleDayMoodTitle.textContent = moodData.title;
+        cycleDayMoodText.textContent = moodData.text;
+
+        renderCycleStatus(moodData.status);
+        renderSymptoms(moodData.symptoms);
+
+        selectedCycleStatus = moodData.status;
+        selectedSymptoms = [...moodData.symptoms];
+
+        if (day === 8) {
+            cycleStatusButtons.forEach((button) => {
+                button.disabled = false;
+            });
+
+            symptomButtons.forEach((button) => {
+                button.disabled = false;
+            });
+
+            saveCycleRecordButton.classList.remove("cycle-hidden");
+            saveCycleRecordButton.disabled = false;
+        } else {
+            cycleStatusButtons.forEach((button) => {
+                button.disabled = true;
+            });
+
+            symptomButtons.forEach((button) => {
+                button.disabled = true;
+            });
+
+            saveCycleRecordButton.classList.add("cycle-hidden");
+            saveCycleRecordButton.disabled = true;
+        }
+    }
+
+    function markUnsaved() {
+        if (selectedDay !== 8) {
+            return;
+        }
+
+        saveCycleRecordButton.textContent = "Save Today’s Record";
+        saveCycleRecordButton.classList.remove("cycle-save-btn-saved");
+        saveCycleRecordButton.classList.remove("cycle-hidden");
+        saveCycleRecordButton.disabled = false;
+    }
+
+    calendarDays.forEach((button) => {
+        button.addEventListener("click", () => {
+            const dayNumber = button.querySelector("span")?.textContent.trim();
+            updateSelectedDate(Number(dayNumber));
+
+            if (Number(dayNumber) === 8 && localStorage.getItem(STORAGE_KEY)) {
+                saveCycleRecordButton.textContent = "Saved";
+                saveCycleRecordButton.classList.add("cycle-save-btn-saved");
+            }
+        });
+    });
+
+    cycleStatusButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (selectedDay !== 8) {
+                return;
+            }
+
+            const newStatus = button.dataset.cycleStatus;
+
+            cycleStatusButtons.forEach((item) => {
+                item.classList.remove("active-cycle-log-option");
+            });
+
+            button.classList.add("active-cycle-log-option");
+            selectedCycleStatus = newStatus;
+
+            if (selectedCycleStatus === "Period") {
+                cycleStatusPill.textContent = "Period Day";
+            } else {
+                cycleStatusPill.textContent = "Cycle Day 8";
+            }
+
+            markUnsaved();
+        });
+    });
+
+    symptomButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (selectedDay !== 8) {
+                return;
+            }
+
+            markUnsaved();
+
+            const symptom = button.dataset.symptom;
+
+            if (symptom === "Feeling Fine") {
+                symptomButtons.forEach((item) => {
+                    item.classList.remove("active-cycle-symptom-chip");
+                });
+
+                button.classList.add("active-cycle-symptom-chip");
+                selectedSymptoms = ["Feeling Fine"];
+                return;
+            }
+
+            const feelingFineButton = document.querySelector('[data-symptom="Feeling Fine"]');
+            feelingFineButton.classList.remove("active-cycle-symptom-chip");
+
+            button.classList.toggle("active-cycle-symptom-chip");
+
+            selectedSymptoms = Array.from(document.querySelectorAll(".active-cycle-symptom-chip"))
+                .map((item) => item.dataset.symptom);
+
+            if (selectedSymptoms.length === 0) {
+                feelingFineButton.classList.add("active-cycle-symptom-chip");
+                selectedSymptoms = ["Feeling Fine"];
+            }
+        });
+    });
+
+    saveCycleRecordButton.addEventListener("click", () => {
+        if (selectedDay !== 8) {
+            return;
+        }
+
+        dayMoodData[8] = buildTodayMoodData(selectedCycleStatus, selectedSymptoms);
+
+        applyTodayCalendarRecord(selectedCycleStatus);
+        saveTodayRecordToStorage();
+
+        updateSelectedDate(8);
+
+        saveCycleRecordButton.textContent = "Saved";
+        saveCycleRecordButton.classList.add("cycle-save-btn-saved");
+    });
+
+    const hasSavedTodayRecord = loadTodayRecordFromStorage();
+
+    updateSelectedDate(8);
+
+    if (hasSavedTodayRecord) {
+        saveCycleRecordButton.textContent = "Saved";
+        saveCycleRecordButton.classList.add("cycle-save-btn-saved");
+    }
+</script>
+
+</body>
+</html>
