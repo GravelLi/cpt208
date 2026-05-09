@@ -204,34 +204,11 @@
                         <div>
                             <h3>AI Data Analysis</h3>
                         </div>
-                        <span class="card-tag ai-tag">AI</span>
+
+                        <button class="ai-header-analyse-btn" id="aiAnalyseBtn" type="button">Analyse</button>
                     </div>
 
-                    <div class="ai-conversation">
-                        <article class="ai-bubble bubble-left">
-                            <div class="ai-avatar">AI</div>
-                            <div class="ai-content">
-                                <h4>A lower resting heart rate suggests recovery is improving</h4>
-                                <p>Your resting heart rate over the past week is lower than last week's average, which usually means your recovery is becoming more stable.</p>
-                            </div>
-                        </article>
-
-                        <article class="ai-bubble bubble-right">
-                            <div class="ai-content">
-                                <h4>Your body fat trend is normal, so there is no need to worry about short-term fluctuations</h4>
-                                <p>Daily weight is easily affected by water retention, and this month's body fat trend better reflects the real change.</p>
-                            </div>
-                            <div class="ai-avatar soft-avatar">AI</div>
-                        </article>
-
-                        <article class="ai-bubble bubble-left">
-                            <div class="ai-avatar">AI</div>
-                            <div class="ai-content">
-                                <h4>Reduced pace fluctuation means your endurance output is more stable</h4>
-                                <p>Your average pace over the past 7 days is more consistent than before, which shows your running rhythm control is improving.</p>
-                            </div>
-                        </article>
-                    </div>
+                    <div class="ai-conversation" id="aiConversation"></div>
                 </section>
             </main>
 
@@ -292,5 +269,221 @@
             </nav>
         </div>
     </div>
+
+
+<script>
+    const aiAnalyseBtn = document.getElementById("aiAnalyseBtn");
+    const aiConversation = document.getElementById("aiConversation");
+    const mainContent = document.querySelector(".main-content");
+
+    const STORAGE_KEY = "herRunCycleRecordMay8";
+
+    function getSavedCycleRecord() {
+        const savedRecord = localStorage.getItem(STORAGE_KEY);
+
+        if (!savedRecord) {
+            return {
+                status: "Normal",
+                symptoms: ["Feeling Fine"]
+            };
+        }
+
+        try {
+            const record = JSON.parse(savedRecord);
+
+            if (!record.status || !Array.isArray(record.symptoms)) {
+                return {
+                    status: "Normal",
+                    symptoms: ["Feeling Fine"]
+                };
+            }
+
+            return record;
+        } catch (error) {
+            return {
+                status: "Normal",
+                symptoms: ["Feeling Fine"]
+            };
+        }
+    }
+
+    function hasSymptom(symptoms, symptomName) {
+        return symptoms.includes(symptomName);
+    }
+
+    function buildCycleAnswer(record) {
+        const status = record.status;
+        const symptoms = record.symptoms;
+
+        if (status === "Period") {
+            return "Because today is marked as a period day, the data should be read more gently. Even if your recovery score looks good, HerRun would not suggest chasing speed today. A light jog, walking route, or stretching session would be more suitable.";
+        }
+
+        if (hasSymptom(symptoms, "Cramps")) {
+            return "Since cramps were recorded, the numbers should not be interpreted only through performance. Your heart rate may look acceptable, but comfort matters more today. A slower pace or run-walk mode would be safer.";
+        }
+
+        if (hasSymptom(symptoms, "Low Energy")) {
+            return "Low energy changes how we interpret the dashboard. Your recovery score is strong, but your body signal suggests that today’s goal should stay flexible. A shorter easy session would still count as success.";
+        }
+
+        if (hasSymptom(symptoms, "Mood Swing")) {
+            return "Mood changes do not mean you need to avoid movement, but they suggest the goal should feel emotionally gentle. A low-pressure jog may help, while a strict pace target may add unnecessary stress.";
+        }
+
+        if (hasSymptom(symptoms, "Headache") || hasSymptom(symptoms, "Back Pain")) {
+            return "Because discomfort was recorded, today’s plan should focus on comfort instead of distance or calories. A relaxed walk, light mobility, or very easy jog would be more appropriate.";
+        }
+
+        return "No strong discomfort was recorded today, so an easy run is reasonable. However, because your training load is already slightly high this week, HerRun would still avoid speed work and keep the plan moderate.";
+    }
+
+    function buildDemoDialogue() {
+        const cycleRecord = getSavedCycleRecord();
+
+        return [
+            {
+                type: "user",
+                text: "What does my recovery score of 82 actually mean?"
+            },
+            {
+                type: "ai",
+                text: "Your recovery score looks relatively strong. Together with a resting heart rate of 58 bpm, it suggests that your body is handling recent exercise quite well. It does not mean you should push hard, but an easy or moderate run should be manageable today."
+            },
+            {
+                type: "user",
+                text: "The dashboard says my training load is slightly high. Should I be worried?"
+            },
+            {
+                type: "ai",
+                text: "Not necessarily. Slightly high means you may need adjustment rather than complete rest. Since you have already completed 42 out of 60 km this month, today would be better for a controlled easy run instead of speed training."
+            },
+            {
+                type: "user",
+                text: "My body fat only dropped by 0.4%. Does that mean running is not working?"
+            },
+            {
+                type: "ai",
+                text: "No. A 0.4% monthly change can still be meaningful because body composition changes slowly. It can also be affected by sleep, water, food, and cycle status. The more useful signal is that your pace is becoming steadier while the fat-loss trend remains gentle."
+            },
+            {
+                type: "user",
+                text: "Can you combine all these numbers and tell me what I should do today?"
+            },
+            {
+                type: "ai",
+                text: buildCycleAnswer(cycleRecord)
+            }
+        ];
+    }
+
+    function scrollToLatestMessage() {
+        requestAnimationFrame(() => {
+            if (mainContent) {
+                mainContent.scrollTo({
+                    top: mainContent.scrollHeight,
+                    behavior: "smooth"
+                });
+            }
+        });
+    }
+
+    function createMessageBubble(message) {
+        const bubble = document.createElement("article");
+
+        if (message.type === "user") {
+            bubble.className = "ai-bubble bubble-right user-bubble";
+            bubble.innerHTML = `
+                <div class="ai-content user-ai-content">
+                    <p>${message.text}</p>
+                </div>
+                <img src="avatar.jpg" alt="User avatar" class="ai-user-avatar">
+            `;
+        } else {
+            bubble.className = "ai-bubble bubble-left";
+            bubble.innerHTML = `
+                <div class="ai-avatar">AI</div>
+                <div class="ai-content">
+                    <p>${message.text}</p>
+                </div>
+            `;
+        }
+
+        return bubble;
+    }
+
+    function renderTypingBubble() {
+        const typingBubble = document.createElement("article");
+
+        typingBubble.className = "ai-bubble bubble-left ai-typing-row";
+        typingBubble.innerHTML = `
+            <div class="ai-avatar">AI</div>
+            <div class="ai-content ai-typing-content">
+                <p>Analysing your health data</p>
+            </div>
+        `;
+
+        aiConversation.appendChild(typingBubble);
+        scrollToLatestMessage();
+    }
+
+    function removeTypingBubble() {
+        const typingBubble = aiConversation.querySelector(".ai-typing-row");
+
+        if (typingBubble) {
+            typingBubble.remove();
+        }
+    }
+
+    function playDemoDialogue(messages, index = 0) {
+        if (index >= messages.length) {
+            aiAnalyseBtn.disabled = false;
+            aiAnalyseBtn.textContent = "Replay";
+            scrollToLatestMessage();
+            return;
+        }
+
+        const message = messages[index];
+
+        if (message.type === "ai") {
+            renderTypingBubble();
+
+            setTimeout(() => {
+                removeTypingBubble();
+
+                const bubble = createMessageBubble(message);
+                aiConversation.appendChild(bubble);
+                scrollToLatestMessage();
+
+                setTimeout(() => {
+                    playDemoDialogue(messages, index + 1);
+                }, 6000);
+            }, 1800);
+
+            return;
+        }
+
+        const bubble = createMessageBubble(message);
+        aiConversation.appendChild(bubble);
+        scrollToLatestMessage();
+
+        setTimeout(() => {
+            playDemoDialogue(messages, index + 1);
+        }, 1400);
+    }
+
+    aiAnalyseBtn.addEventListener("click", () => {
+        aiAnalyseBtn.disabled = true;
+        aiAnalyseBtn.textContent = "Analysing...";
+
+        aiConversation.innerHTML = "";
+
+        const messages = buildDemoDialogue();
+
+        setTimeout(() => {
+            playDemoDialogue(messages);
+        }, 600);
+    });
+</script>
 </body>
 </html>
